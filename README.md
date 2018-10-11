@@ -1,6 +1,6 @@
-# Diego Ferreira Caetano - Samples: GitHub
 
-<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.png" width="100" />
+<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.png" width="60" /># Diego Ferreira Caetano - Samples: GitHub
+
 
 
 # Kotlin + Koin + RxKotlin + Live Data  with Android Architecture Components
