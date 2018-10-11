@@ -1,9 +1,9 @@
-
-<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.png" width="60" /># Diego Ferreira Caetano - Samples: GitHub
-
+# Diego Ferreira Caetano - Samples: GitHub
 
 
-# Kotlin + Koin + RxKotlin + Live Data  with Android Architecture Components
+<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.png" width="60" />
+
+# Kotlin + Koin + RxKotlin + Live Data + Paging + Callback + Cache with Android Architecture Components
 
 
 # Components
@@ -12,6 +12,9 @@
 - Koin
 - RxKotlin
 - Navigation
+- Paging 
+- Paging Callback
+- Jetpack
 - Clean Architecture
 - Lifecycle-aware components
 - ViewModels
@@ -30,9 +33,6 @@
 Credits
 -------
 - API https://github.com
-
-License
--------
 
 License
 -------
