@@ -2,7 +2,7 @@
 
 # Kotlin + Koin + RxKotlin + Live Data  with Android Architecture Components
 
-<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.jpg" width="300" />
+<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/logo.png" width="300" />
 
 
 # Components
@@ -24,7 +24,7 @@
 
 
 
-<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/img1.jpg" width="300" />         <img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/img2.jpg" width="300" />
+<img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/tela1.jpg" width="300" />         <img src="https://raw.githubusercontent.com/diegoferreiracaetano/github/master/img/tela2.jpg" width="300" />
 
 Credits
 -------
