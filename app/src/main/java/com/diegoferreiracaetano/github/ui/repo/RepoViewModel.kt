@@ -1,6 +1,7 @@
 package com.diegoferreiracaetano.github.ui.repo
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -13,6 +14,7 @@ import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 class RepoViewModel(private val getRepoInteractor: GetListRepoInteractor,
                     private val callback: CallbackRepoInteractor) : ViewModel() {
 
+    val itemSelected = MutableLiveData<Repo>()
     val result : LiveData<PagedList<Repo>>
 
     init {
@@ -32,6 +34,9 @@ class RepoViewModel(private val getRepoInteractor: GetListRepoInteractor,
         callback.retry()
     }
 
+    fun setItem(repo: Repo) {
+        itemSelected.value = repo
+    }
 
     fun refresh() {
         callback.onZeroItemsLoaded()
