@@ -10,4 +10,7 @@
     <string name="dateFormat">%1$td/%1$tm/%1$tY - %1$tH:%1$tM</string>
     <string name="not_found_pull_request">Nenhum Pull request</string>
     <string name="not_found_repo">Nenhum repositório</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

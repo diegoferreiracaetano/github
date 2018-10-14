@@ -32,6 +32,15 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
     }
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (resources.getBoolean(R.bool.has_two_panes)) {
+            activity?.supportFragmentManager?.popBackStack();
+            return
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null) {
@@ -42,6 +51,11 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
         }
     }
 
+    fun display(repoName:String,ownerName:String){
+        (activity as MainActivity).supportActionBar?.subtitle = repoName.capitalize()
+         viewModel.setParams(Pair(ownerName,repoName))
+    }
+
     override fun onItemClick(view: View, pull: Pull) {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(pull.url))
         startActivity(browserIntent)
@@ -49,7 +63,9 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
 
 
     companion object {
+
         val EXTRA_REPO_NAME = "EXTRA_REPO_NAME"
         val EXTRA_OWNER_NAME = "EXTRA_OWNER_NAME"
     }
+
 }
