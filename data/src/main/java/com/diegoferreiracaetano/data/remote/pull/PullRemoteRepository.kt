@@ -15,7 +15,7 @@ class PullRemoteRepository(private val api : GithubApi) : PullRepository {
     override fun getList(owner:String,repo:String,page : Int): Flowable<List<Pull>> {
         return api.getPull(owner,repo,page)
                 .flatMap{Flowable.fromIterable(it)}
-                .flatMapMaybe{Maybe.just(it.copy(ownerName = owner,repoName = repo))}
+                .flatMapMaybe{Maybe.just(it.parse().copy(ownerName = owner,repoName = repo)) }
                 .toList()
                 .toFlowable()
     }

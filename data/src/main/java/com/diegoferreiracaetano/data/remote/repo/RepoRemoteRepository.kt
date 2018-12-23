@@ -11,6 +11,10 @@ class RepoRemoteRepository(private val api : GithubApi) : RepoRepository {
 
     override fun getList(page: Int): Flowable<List<Repo>> {
         return api.getListRepo(page = page).map { it.items }
+                .flatMap { Flowable.fromIterable(it)}
+                .map {it.parse() }
+                .toList()
+                .toFlowable()
     }
 
     override fun getList(): DataSource.Factory<Int, Repo> {
