@@ -1,4 +1,4 @@
-package com.diegoferreiracaetano.data.repo
+package com.diegoferreiracaetano.data.local.repo
 
 import androidx.paging.DataSource
 import androidx.room.Dao

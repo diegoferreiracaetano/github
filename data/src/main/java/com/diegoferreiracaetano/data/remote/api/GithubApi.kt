@@ -1,6 +1,6 @@
-package com.diegoferreiracaetano.data.api
+package com.diegoferreiracaetano.data.remote.api
 
-import com.diegoferreiracaetano.data.items.Items
+import com.diegoferreiracaetano.data.items.RepoResponse
 import com.diegoferreiracaetano.domain.Constants
 import com.diegoferreiracaetano.domain.pull.Pull
 import io.reactivex.Flowable
@@ -14,11 +14,11 @@ interface GithubApi{
     fun getListRepo(@Query("q") q:String = "language:Java",
                     @Query("sort") stars:String = "stars",
                     @Query("page") page:Int,
-                    @Query("per_page") per_page :Int = Constants.PAGE_SIZE): Flowable<Items>
+                    @Query("per_page") per_page :Int = Constants.PAGE_SIZE): Flowable<RepoResponse>
 
     @GET("repos/{owner}/{repo}/pulls")
     fun getPull( @Path("owner") onwer: String,
-                  @Path("repo") repo:String,
+                 @Path("repo") repo:String,
                  @Query("page") page:Int,
                  @Query("per_page") per_page :Int = Constants.PAGE_SIZE): Flowable<List<Pull>>
 }

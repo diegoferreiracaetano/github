@@ -1,5 +1,6 @@
 package com.diegoferreiracaetano.github.di
 
+import com.diegoferreiracaetano.data.remote.api.GithubApi
 import com.diegoferreiracaetano.github.BuildConfig
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
@@ -48,10 +49,14 @@ val appModule : Module = module {
     }
 
     single {
-        Retrofit.Builder()
-                .client(get ())
+
+       val retrofit = Retrofit.Builder()
+                .client(get())
                 .baseUrl(BuildConfig.END_POINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build() }
+                .build()
+
+        retrofit.create(GithubApi::class.java)
+    }
 }

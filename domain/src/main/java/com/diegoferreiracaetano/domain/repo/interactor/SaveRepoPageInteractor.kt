@@ -4,14 +4,15 @@ import com.diegoferreiracaetano.domain.InteractorFlowable
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 import io.reactivex.Flowable
 
-class SaveRepoPageInteractor(private val repository: RepoRepository): InteractorFlowable<List<Long>,SaveRepoPageInteractor.Request>() {
+class SaveRepoPageInteractor(private val repositoryLocal: RepoRepository,
+                             private val repositoryRemote: RepoRepository): InteractorFlowable<List<Long>,SaveRepoPageInteractor.Request>() {
 
     override fun create(request: Request): Flowable<List<Long>> {
-        return repository.getTotal()
+        return repositoryLocal.getTotal()
                 .map {it.div(request.limit).plus(1)}
                 .toFlowable()
-                .flatMap{repository.getList(it)}
-                .flatMap { repository.save(it)}
+                .flatMap{repositoryRemote.getList(it)}
+                .flatMap{repositoryLocal.save(it)}
     }
 
 

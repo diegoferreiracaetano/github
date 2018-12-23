@@ -1,25 +1,15 @@
-package com.diegoferreiracaetano.data.pull
+package com.diegoferreiracaetano.data.local.pull
 
 import androidx.paging.DataSource
-import com.diegoferreiracaetano.data.api.GithubApi
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.PullRepository
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 import io.reactivex.Single
-import retrofit2.Retrofit
 
-class PullImpRepository(private var dao: PullDao,
-                        private val retrofit: Retrofit) : PullRepository {
-
-    private val api = retrofit.create(GithubApi::class.java)
+class PullLocalRepository(private var dao: PullDao) : PullRepository {
 
     override fun getList(owner:String,repo:String,page : Int): Flowable<List<Pull>> {
-        return api.getPull(owner,repo,page)
-                .flatMap{Flowable.fromIterable(it)}
-                .flatMapMaybe{Maybe.just(it.copy(ownerName = owner,repoName = repo))}
-                .toList()
-                .toFlowable()
+        return Flowable.empty()
     }
 
     override fun getList(owner:String,repo:String): DataSource.Factory<Int, Pull> {

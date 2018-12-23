@@ -1,7 +1,12 @@
 package com.diegoferreiracaetano.github.di
 
-import com.diegoferreiracaetano.data.pull.PullImpRepository
-import com.diegoferreiracaetano.data.repo.RepoImpRepository
+import com.diegoferreiracaetano.data.local.pull.PullLocalRepository
+import com.diegoferreiracaetano.data.local.repo.RepoLocalRepository
+import com.diegoferreiracaetano.data.remote.pull.PullRemoteRepository
+import com.diegoferreiracaetano.data.remote.repo.RepoRemoteRepository
+import com.diegoferreiracaetano.domain.Constants.LOCAL
+import com.diegoferreiracaetano.domain.Constants.REMOTE
+import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.PullRepository
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
@@ -18,17 +23,20 @@ import org.koin.dsl.module.module
 
 val repositoryModule : Module = module {
 
-    single{ RepoImpRepository(get(),get()) as RepoRepository}
-    single{ PullImpRepository(get(),get()) as PullRepository }
+    single(REMOTE) { RepoRemoteRepository(get()) as RepoRepository}
+    single(LOCAL) { RepoLocalRepository(get()) as RepoRepository}
 
-    single { GetListRepoInteractor(get()) }
-    single { CallbackRepoInteractor(get(),get()) }
-    single { SaveRepoInicialInteractor(get())}
-    single { SaveRepoPageInteractor(get()) }
+    single(REMOTE) { PullRemoteRepository(get()) as PullRepository}
+    single(LOCAL) { PullLocalRepository(get()) as PullRepository}
 
-    single { GetListPullInteractor(get()) }
-    single { CallbackPullInteractor(get(),get()) }
-    single { SavePullInicialInteractor(get()) }
-    single { SavePullPageInteractor(get()) }
+    single { GetListRepoInteractor(get(LOCAL))}
+    single { SaveRepoInicialInteractor(get(LOCAL),get(REMOTE))}
+    single { SaveRepoPageInteractor(get(LOCAL),get(REMOTE))}
+    single { CallbackRepoInteractor(get(),get())}
+
+    single { GetListPullInteractor(get(LOCAL)) }
+    single { SavePullInicialInteractor(get(LOCAL),get(REMOTE))}
+    single { SavePullPageInteractor(get(LOCAL),get(REMOTE))}
+    single { CallbackPullInteractor(get(),get())}
 
 }

@@ -35,7 +35,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$libs.rxandroid"
     implementation "androidx.paging:paging-runtime:$libs.paging"
 
-    implementation "org.koin:koin-androidx-viewmodel:$libs.koin"
+
     implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
     implementation "androidx.room:room-rxjava2:$libs.room"
     kapt "androidx.room:room-compiler:$libs.room"

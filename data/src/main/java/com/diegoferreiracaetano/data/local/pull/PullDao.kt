@@ -1,4 +1,4 @@
-package com.diegoferreiracaetano.data.pull
+package com.diegoferreiracaetano.data.local.pull
 
 import androidx.paging.DataSource
 import androidx.room.Dao

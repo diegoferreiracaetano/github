@@ -1,24 +1,15 @@
-package com.diegoferreiracaetano.data.repo
+package com.diegoferreiracaetano.data.local.repo
 
 import androidx.paging.DataSource
-import com.diegoferreiracaetano.data.api.GithubApi
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 import io.reactivex.Flowable
 import io.reactivex.Single
-import retrofit2.Retrofit
 
-class RepoImpRepository(private var dao: RepoDao,
-                        private val retrofit: Retrofit) : RepoRepository {
-
-    private val api = retrofit.create(GithubApi::class.java)
+class RepoLocalRepository(private var dao: RepoDao) : RepoRepository {
 
     override fun getList(page: Int): Flowable<List<Repo>> {
-        return api.getListRepo(page = page).map { it.items }
-                .flatMap { Flowable.fromIterable(it)}
-                .toList()
-                .toFlowable()
-
+        return Flowable.empty()
     }
 
     override fun getList(): DataSource.Factory<Int, Repo> {

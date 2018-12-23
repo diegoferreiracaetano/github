@@ -1,7 +1,7 @@
 package com.diegoferreiracaetano.github.di
 
 import androidx.room.Room
-import com.diegoferreiracaetano.data.LocalDb
+import com.diegoferreiracaetano.data.local.LocalDb
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 
