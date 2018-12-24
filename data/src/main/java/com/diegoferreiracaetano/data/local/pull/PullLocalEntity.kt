@@ -5,7 +5,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.diegoferreiracaetano.domain.owner.Owner
-import com.google.gson.annotations.SerializedName
+import com.diegoferreiracaetano.domain.pull.Pull
 import java.io.Serializable
 import java.util.*
 
@@ -24,4 +24,10 @@ data class PullLocalEntity(
                 @ColumnInfo(name = "repo_name")
                 var repoName: String): Serializable {
     constructor():this(0,"",Date(),"","", Owner(), "","")
+
+    fun convertToPull() = Pull(id, title, date, body, url, owner, ownerName, repoName)
+
+    companion object {
+        fun parse(pull: Pull) = PullLocalEntity(pull.id, pull.title, pull.date, pull.body, pull.url, pull.owner, pull.ownerName, pull.repoName)
+    }
 }

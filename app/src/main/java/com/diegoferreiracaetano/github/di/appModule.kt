@@ -1,6 +1,6 @@
 package com.diegoferreiracaetano.github.di
 
-import com.diegoferreiracaetano.data.remote.api.GithubApi
+import com.diegoferreiracaetano.data.remote.github.api.GithubApi
 import com.diegoferreiracaetano.github.BuildConfig
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
@@ -24,7 +24,7 @@ val appModule : Module = module {
         val httpClient = OkHttpClient().newBuilder()
             .connectTimeout(REQUEST_TIMEOUT , TimeUnit.SECONDS)
             .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS);
+                .writeTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -44,7 +44,7 @@ val appModule : Module = module {
             }
         })
 
-        httpClient.build();
+        httpClient.build()
 
     }
 

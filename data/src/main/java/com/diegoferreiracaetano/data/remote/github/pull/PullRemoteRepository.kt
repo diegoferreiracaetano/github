@@ -1,21 +1,19 @@
-package com.diegoferreiracaetano.data.remote.pull
+package com.diegoferreiracaetano.data.remote.github.pull
 
 import androidx.paging.DataSource
-import com.diegoferreiracaetano.data.local.pull.PullDao
-import com.diegoferreiracaetano.data.remote.api.GithubApi
+import com.diegoferreiracaetano.data.remote.github.api.GithubApi
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.PullRepository
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
-import retrofit2.Retrofit
 
 class PullRemoteRepository(private val api : GithubApi) : PullRepository {
 
     override fun getList(owner:String,repo:String,page : Int): Flowable<List<Pull>> {
         return api.getPull(owner,repo,page)
                 .flatMap{Flowable.fromIterable(it)}
-                .flatMapMaybe{Maybe.just(it.parse().copy(ownerName = owner,repoName = repo)) }
+                .flatMapMaybe { Maybe.just(it.convertToPull().copy(ownerName = owner, repoName = repo)) }
                 .toList()
                 .toFlowable()
     }

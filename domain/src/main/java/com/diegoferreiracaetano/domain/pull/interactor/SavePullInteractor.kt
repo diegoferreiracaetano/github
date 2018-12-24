@@ -1,11 +1,11 @@
 package com.diegoferreiracaetano.domain.pull.interactor
 
-import com.diegoferreiracaetano.domain.InteractorFlowable
 import com.diegoferreiracaetano.domain.pull.PullRepository
+import com.diegoferreiracaetano.domain.utils.InteractorFlowable
 import io.reactivex.Flowable
 
-class SavePullInicialInteractor(private val repositoryLocal: PullRepository,
-                                private val repositoryRemote: PullRepository): InteractorFlowable<List<Long>,SavePullInicialInteractor.Request>() {
+class SavePullInteractor(private val repositoryLocal: PullRepository,
+                         private val repositoryRemote: PullRepository) : InteractorFlowable<List<Long>, SavePullInteractor.Request>() {
 
     override fun create(request: Request): Flowable<List<Long>> {
         return repositoryRemote.getList(request.owner,request.repo,request.page)

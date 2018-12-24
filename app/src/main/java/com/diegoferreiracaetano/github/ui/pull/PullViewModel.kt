@@ -6,10 +6,10 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.diegoferreiracaetano.domain.Constants
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
+import com.diegoferreiracaetano.domain.utils.Constants
 
 class PullViewModel(private val getPullInteractor: GetListPullInteractor,
                     private val callback :CallbackPullInteractor) : ViewModel() {

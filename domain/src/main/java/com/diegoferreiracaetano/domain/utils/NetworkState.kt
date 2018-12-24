@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.diegoferreiracaetano.domain
+package com.diegoferreiracaetano.domain.utils
 
 enum class Status {
     RUNNING,

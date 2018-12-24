@@ -2,16 +2,16 @@ package com.diegoferreiracaetano.domain.pull.interactor
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
-import com.diegoferreiracaetano.domain.Constants
-import com.diegoferreiracaetano.domain.NetworkState
 import com.diegoferreiracaetano.domain.pull.Pull
+import com.diegoferreiracaetano.domain.utils.Constants
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 import io.reactivex.subscribers.DisposableSubscriber
 
-class CallbackPullInteractor(private val saveInicialInteractor: SavePullInicialInteractor,
-                             private val savePullPageInteractor: SavePullPageInteractor):
+class CallbackPullInteractor(private val saveInicialInteractor: SavePullInteractor,
+                             private val getPaginationInteractor: GetPaginationPullInteractor) :
         PagedList.BoundaryCallback<Pull>() {
 
     private var disposable = CompositeDisposable()
@@ -22,39 +22,40 @@ class CallbackPullInteractor(private val saveInicialInteractor: SavePullInicialI
     val networkState = MutableLiveData<NetworkState>()
 
     override fun onZeroItemsLoaded() {
-      params.value?.let {
-          disposable.add(saveInicialInteractor.execute(SavePullInicialInteractor.Request(it.first,it.second,1))
-                  .subscribeWith(object : DisposableSubscriber<List<Long>>(){
-                      override fun onStart() {
-                          super.onStart()
-                          initialLoad.postValue(NetworkState.LOADING)
-                      }
+        params.value?.let {
+            disposable.add(saveInicialInteractor.execute(SavePullInteractor.Request(it.first, it.second, 1))
+                    .subscribeWith(object : DisposableSubscriber<List<Long>>() {
+                        override fun onStart() {
+                            super.onStart()
+                            initialLoad.postValue(NetworkState.LOADING)
+                        }
 
-                      override fun onNext(t: List<Long>) {
-                          if(t.isEmpty()){
-                              initialLoad.postValue(NetworkState.IS_EMPTY)
-                          }else{
-                              initialLoad.postValue(NetworkState.LOADED)
-                          }
-                      }
+                        override fun onNext(t: List<Long>) {
+                            if (t.isEmpty()) {
+                                initialLoad.postValue(NetworkState.IS_EMPTY)
+                            } else {
+                                initialLoad.postValue(NetworkState.LOADED)
+                            }
+                        }
 
-                      override fun onError(t: Throwable) {
-                          val erro = NetworkState.error(t.message)
-                          initialLoad.postValue(erro)
-                          networkState.postValue(erro)
-                          setRetry(Action { onZeroItemsLoaded() })
-                      }
+                        override fun onError(t: Throwable) {
+                            val erro = NetworkState.error(t.message)
+                            initialLoad.postValue(erro)
+                            networkState.postValue(erro)
+                            setRetry(Action { onZeroItemsLoaded() })
+                        }
 
-                      override fun onComplete() {
-                          networkState.postValue(NetworkState.LOADED)
-                      }
-                  }))
-      }
+                        override fun onComplete() {
+                            networkState.postValue(NetworkState.LOADED)
+                        }
+                    }))
+        }
     }
 
     override fun onItemAtEndLoaded(pull: Pull) {
-        params.value?.let {
-            disposable.add(savePullPageInteractor.execute(SavePullPageInteractor.Request(it.first,it.second, Constants.PAGE_SIZE))
+        params.value?.let { it ->
+            disposable.add(getPaginationInteractor.execute(GetPaginationPullInteractor.Request(Constants.PAGE_SIZE))
+                    .flatMap { page -> saveInicialInteractor.execute(SavePullInteractor.Request(it.first, it.second, page)) }
                     .subscribeWith(object : DisposableSubscriber<List<Long>>() {
                         override fun onStart() {
                             super.onStart()

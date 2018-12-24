@@ -1,4 +1,4 @@
-package com.diegoferreiracaetano.domain
+package com.diegoferreiracaetano.domain.utils
 
 object Constants {
     val PAGE_SIZE = 10

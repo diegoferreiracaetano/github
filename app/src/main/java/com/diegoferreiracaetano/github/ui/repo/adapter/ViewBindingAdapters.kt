@@ -3,8 +3,8 @@ package com.diegoferreiracaetano.github.ui.repo.adapter
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
-import com.diegoferreiracaetano.domain.NetworkState
 import com.diegoferreiracaetano.domain.repo.Repo
+import com.diegoferreiracaetano.domain.utils.NetworkState
 
 object ViewBindingAdapters{
     @JvmStatic

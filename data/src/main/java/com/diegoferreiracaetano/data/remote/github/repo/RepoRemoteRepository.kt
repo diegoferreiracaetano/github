@@ -1,7 +1,7 @@
-package com.diegoferreiracaetano.data.remote.repo
+package com.diegoferreiracaetano.data.remote.github.repo
 
 import androidx.paging.DataSource
-import com.diegoferreiracaetano.data.remote.api.GithubApi
+import com.diegoferreiracaetano.data.remote.github.api.GithubApi
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 import io.reactivex.Flowable
@@ -12,7 +12,7 @@ class RepoRemoteRepository(private val api : GithubApi) : RepoRepository {
     override fun getList(page: Int): Flowable<List<Repo>> {
         return api.getListRepo(page = page).map { it.items }
                 .flatMap { Flowable.fromIterable(it)}
-                .map {it.parse() }
+                .map { it.convertToRepo() }
                 .toList()
                 .toFlowable()
     }

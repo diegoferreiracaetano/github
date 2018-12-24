@@ -1,9 +1,8 @@
-package com.diegoferreiracaetano.data.remote.api
+package com.diegoferreiracaetano.data.remote.github.api
 
-import com.diegoferreiracaetano.data.remote.pull.PullRemoteEntity
-import com.diegoferreiracaetano.data.remote.repo.RepoResponseRemoteEntity
-import com.diegoferreiracaetano.domain.Constants
-import com.diegoferreiracaetano.domain.pull.Pull
+import com.diegoferreiracaetano.data.remote.github.pull.PullRemoteEntity
+import com.diegoferreiracaetano.data.remote.github.repo.RepoResponseRemoteEntity
+import com.diegoferreiracaetano.domain.utils.Constants
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Path

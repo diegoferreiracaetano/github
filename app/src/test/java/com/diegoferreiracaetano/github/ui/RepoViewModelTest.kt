@@ -2,10 +2,10 @@ package com.diegoferreiracaetano.github.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.diegoferreiracaetano.domain.NetworkState
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.interactor.CallbackRepoInteractor
 import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.GitHubFake
 import com.diegoferreiracaetano.github.mock.RepoDataSource
 import com.diegoferreiracaetano.github.ui.repo.RepoViewModel

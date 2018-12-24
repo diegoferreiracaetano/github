@@ -2,16 +2,16 @@ package com.diegoferreiracaetano.domain.repo.interactor
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
-import com.diegoferreiracaetano.domain.Constants
-import com.diegoferreiracaetano.domain.NetworkState
 import com.diegoferreiracaetano.domain.repo.Repo
+import com.diegoferreiracaetano.domain.utils.Constants
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 import io.reactivex.subscribers.DisposableSubscriber
 
-class CallbackRepoInteractor(private val saveInicialCacheInteractor: SaveRepoInicialInteractor,
-                             private val saveCacheInteractor: SaveRepoPageInteractor): PagedList.BoundaryCallback<Repo>() {
+class CallbackRepoInteractor(private val saveRepoInteractor: SaveRepoInteractor,
+                             private val getPaginationRepoInteractor: GetPaginationRepoInteractor) : PagedList.BoundaryCallback<Repo>() {
 
     private var disposable = CompositeDisposable()
     private var retryCompletable: Completable? = null
@@ -19,7 +19,7 @@ class CallbackRepoInteractor(private val saveInicialCacheInteractor: SaveRepoIni
     val networkState = MutableLiveData<NetworkState>()
 
     override fun onZeroItemsLoaded() {
-        disposable.add(saveInicialCacheInteractor.execute(SaveRepoInicialInteractor.Request(1))
+        disposable.add(saveRepoInteractor.execute(SaveRepoInteractor.Request(1))
                 .subscribeWith(object : DisposableSubscriber<List<Long>>(){
                     override fun onStart() {
                         super.onStart()
@@ -48,7 +48,8 @@ class CallbackRepoInteractor(private val saveInicialCacheInteractor: SaveRepoIni
     }
 
     override fun onItemAtEndLoaded(repo: Repo) {
-        disposable.add(saveCacheInteractor.execute(SaveRepoPageInteractor.Request(Constants.PAGE_SIZE))
+        disposable.add(getPaginationRepoInteractor.execute(GetPaginationRepoInteractor.Request(Constants.PAGE_SIZE))
+                .flatMap { page -> saveRepoInteractor.execute(SaveRepoInteractor.Request(page)) }
                 .subscribeWith(object : DisposableSubscriber<List<Long>>() {
                     override fun onStart() {
                         super.onStart()

@@ -1,4 +1,4 @@
-package com.diegoferreiracaetano.data.remote.pull
+package com.diegoferreiracaetano.data.remote.github.pull
 
 import com.diegoferreiracaetano.domain.owner.Owner
 import com.diegoferreiracaetano.domain.pull.Pull
@@ -19,5 +19,5 @@ data class PullRemoteEntity(
                 var ownerName: String,
                 var repoName: String): Serializable {
 
-    fun parse() = Pull(id, title, date, body, url, owner, ownerName, repoName)
+    fun convertToPull() = Pull(id, title, date, body, url, owner, ownerName, repoName)
 }

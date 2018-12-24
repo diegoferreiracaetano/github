@@ -11,7 +11,7 @@
             type="com.diegoferreiracaetano.github.ui.repo.adapter.RepoViewHolder.OnItemClickListener" />
         <variable
             name="status"
-            type="com.diegoferreiracaetano.domain.Status" />
+            type="com.diegoferreiracaetano.domain.utils.Status" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"

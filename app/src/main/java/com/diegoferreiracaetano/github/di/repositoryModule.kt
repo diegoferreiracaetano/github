@@ -2,21 +2,20 @@ package com.diegoferreiracaetano.github.di
 
 import com.diegoferreiracaetano.data.local.pull.PullLocalRepository
 import com.diegoferreiracaetano.data.local.repo.RepoLocalRepository
-import com.diegoferreiracaetano.data.remote.pull.PullRemoteRepository
-import com.diegoferreiracaetano.data.remote.repo.RepoRemoteRepository
-import com.diegoferreiracaetano.domain.Constants.LOCAL
-import com.diegoferreiracaetano.domain.Constants.REMOTE
-import com.diegoferreiracaetano.domain.pull.Pull
+import com.diegoferreiracaetano.data.remote.github.pull.PullRemoteRepository
+import com.diegoferreiracaetano.data.remote.github.repo.RepoRemoteRepository
 import com.diegoferreiracaetano.domain.pull.PullRepository
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
-import com.diegoferreiracaetano.domain.pull.interactor.SavePullInicialInteractor
-import com.diegoferreiracaetano.domain.pull.interactor.SavePullPageInteractor
+import com.diegoferreiracaetano.domain.pull.interactor.GetPaginationPullInteractor
+import com.diegoferreiracaetano.domain.pull.interactor.SavePullInteractor
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 import com.diegoferreiracaetano.domain.repo.interactor.CallbackRepoInteractor
 import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
-import com.diegoferreiracaetano.domain.repo.interactor.SaveRepoInicialInteractor
-import com.diegoferreiracaetano.domain.repo.interactor.SaveRepoPageInteractor
+import com.diegoferreiracaetano.domain.repo.interactor.GetPaginationRepoInteractor
+import com.diegoferreiracaetano.domain.repo.interactor.SaveRepoInteractor
+import com.diegoferreiracaetano.domain.utils.Constants.LOCAL
+import com.diegoferreiracaetano.domain.utils.Constants.REMOTE
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 
@@ -30,13 +29,13 @@ val repositoryModule : Module = module {
     single(LOCAL) { PullLocalRepository(get()) as PullRepository}
 
     single { GetListRepoInteractor(get(LOCAL))}
-    single { SaveRepoInicialInteractor(get(LOCAL),get(REMOTE))}
-    single { SaveRepoPageInteractor(get(LOCAL),get(REMOTE))}
+    single { SaveRepoInteractor(get(LOCAL), get(REMOTE)) }
+    single { GetPaginationRepoInteractor(get(LOCAL)) }
     single { CallbackRepoInteractor(get(),get())}
 
     single { GetListPullInteractor(get(LOCAL)) }
-    single { SavePullInicialInteractor(get(LOCAL),get(REMOTE))}
-    single { SavePullPageInteractor(get(LOCAL),get(REMOTE))}
+    single { SavePullInteractor(get(LOCAL), get(REMOTE)) }
+    single { GetPaginationPullInteractor(get(LOCAL)) }
     single { CallbackPullInteractor(get(),get())}
 
 }

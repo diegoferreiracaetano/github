@@ -2,10 +2,10 @@ package com.diegoferreiracaetano.github.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.diegoferreiracaetano.domain.NetworkState
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.GitHubFake
 import com.diegoferreiracaetano.github.mock.PullDataSource
 import com.diegoferreiracaetano.github.ui.pull.PullViewModel

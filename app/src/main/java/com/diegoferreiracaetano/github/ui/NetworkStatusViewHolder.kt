@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.diegoferreiracaetano.domain.NetworkState
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.R
 import com.diegoferreiracaetano.github.databinding.ItemNetworkStateBinding
 import kotlinx.android.synthetic.main.item_network_state.view.*

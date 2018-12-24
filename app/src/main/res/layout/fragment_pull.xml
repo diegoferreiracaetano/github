@@ -8,7 +8,7 @@
             type="com.diegoferreiracaetano.github.ui.pull.PullViewModel"/>
         <variable
             name="status"
-            type="com.diegoferreiracaetano.domain.Status" />
+            type="com.diegoferreiracaetano.domain.utils.Status" />
         <variable
             name="callback"
             type="com.diegoferreiracaetano.github.ui.pull.adapter.PullViewHolder.OnItemClickListener" />

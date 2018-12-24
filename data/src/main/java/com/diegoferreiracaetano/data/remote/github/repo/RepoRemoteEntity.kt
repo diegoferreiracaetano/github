@@ -1,4 +1,4 @@
-package com.diegoferreiracaetano.data.remote.repo
+package com.diegoferreiracaetano.data.remote.github.repo
 
 import androidx.room.Embedded
 import com.diegoferreiracaetano.domain.owner.Owner
@@ -17,5 +17,5 @@ data class RepoRemoteEntity (
         @Embedded(prefix = "owner_")
         var owner: Owner) :Serializable{
 
-        fun parse() = Repo(id, name, description, starts, forks, owner)
+    fun convertToRepo() = Repo(id, name, description, starts, forks, owner)
 }

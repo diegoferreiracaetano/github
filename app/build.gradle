@@ -9,8 +9,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 
 def cfg = rootProject.ext.configuration
-def libs = rootProject.ext.libraries;
-def test = rootProject.ext.testingLibraries;
+def libs = rootProject.ext.libraries
+def test = rootProject.ext.testingLibraries
 
 android {
     compileSdkVersion 28
@@ -60,7 +60,6 @@ dependencies {
 
 
     implementation "androidx.paging:paging-runtime:$libs.paging"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
     testImplementation "androidx.paging:paging-common:$libs.paging"
 
     implementation "android.arch.navigation:navigation-fragment-ktx:$libs.nav_version"

@@ -4,10 +4,10 @@
     <data>
         <variable
             name="networkState"
-            type="com.diegoferreiracaetano.domain.NetworkState" />
+            type="com.diegoferreiracaetano.domain.utils.NetworkState" />
         <variable
             name="status"
-            type="com.diegoferreiracaetano.domain.Status" />
+            type="com.diegoferreiracaetano.domain.utils.Status" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +37,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/error"
             app:srcCompat="@drawable/ic_sentiment_dissatisfied"
             app:isVisible="@{networkState.status == status.FAILED}"
             />

@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.diegoferreiracaetano.domain.NetworkState
+import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.R
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
