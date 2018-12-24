@@ -21,7 +21,6 @@ android {
         versionCode cfg.versionCode
         versionName cfg.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField 'String', 'END_POINT', '"https://api.github.com/"'
     }
     buildTypes {
         release {
@@ -48,14 +47,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$libs.extensions"
 
     implementation "org.koin:koin-androidx-viewmodel:$libs.koin"
-    implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
+
     implementation "io.reactivex.rxjava2:rxkotlin:$libs.rxkotlin"
     implementation "io.reactivex.rxjava2:rxandroid:$libs.rxandroid"
-    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$libs.retrofitRx"
 
-    implementation "com.squareup.okhttp3:okhttp:$libs.okhttp"
-    implementation "com.squareup.okhttp3:okhttp-urlconnection:$libs.okhttpUrlconnection"
-    implementation "com.squareup.okhttp3:logging-interceptor:$libs.loggingInterceptor"
     implementation "com.github.bumptech.glide:glide:$libs.glide"
 
 
@@ -76,9 +71,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$test.espresso"
     testImplementation "androidx.arch.core:core-testing:$libs.extensions"
     testImplementation "org.koin:koin-test:$test.koin"
-
-
-
 
 
     api project(path: ':data')

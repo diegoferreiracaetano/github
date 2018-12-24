@@ -1,7 +1,8 @@
-package com.diegoferreiracaetano.github.di
+package com.diegoferreiracaetano.data.di
 
+import com.diegoferreiracaetano.data.BuildConfig
 import com.diegoferreiracaetano.data.remote.github.api.GithubApi
-import com.diegoferreiracaetano.github.BuildConfig
+
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit
 
 private val REQUEST_TIMEOUT :Long = 60
 
-val appModule : Module = module {
+val restModule: Module = module {
 
     single {
 
