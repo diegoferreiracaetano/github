@@ -11,17 +11,17 @@ import java.util.*
 
 @Entity(tableName = "pull")
 data class PullLocalEntity(
-                @PrimaryKey
+        @PrimaryKey
                 val id:Long,
-                val title:String,
-                val date:Date,
-                val body:String?,
-                val url:String,
-                @Embedded(prefix = "user_")
+        val title: String,
+        val date: Date,
+        val body: String?,
+        val url: String,
+        @Embedded(prefix = "user_")
                 var owner: Owner,
-                @ColumnInfo(name = "owner_name")
-                var ownerName: String,
-                @ColumnInfo(name = "repo_name")
+        @ColumnInfo(name = "owner_name")
+        var ownerName: String?,
+        @ColumnInfo(name = "repo_name")
                 var repoName: String): Serializable {
     constructor():this(0,"",Date(),"","", Owner(), "","")
 
