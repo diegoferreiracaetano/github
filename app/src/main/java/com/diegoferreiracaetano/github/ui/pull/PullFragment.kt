@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.github.R
 import com.diegoferreiracaetano.github.databinding.FragmentPullBinding
-import com.diegoferreiracaetano.github.ui.MainActivity
 import com.diegoferreiracaetano.github.ui.pull.adapter.PullViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,36 +30,19 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
         return binding.root
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (resources.getBoolean(R.bool.has_two_panes)) {
-            activity?.supportFragmentManager?.popBackStack();
-            return
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null) {
             val repoName = arguments!!.getString(EXTRA_REPO_NAME)
             val ownerName = arguments!!.getString(EXTRA_OWNER_NAME)
-            (activity as MainActivity).supportActionBar?.subtitle = repoName?.capitalize()
             viewModel.setParams(Pair(ownerName,repoName))
         }
-    }
-
-    fun display(repoName:String,ownerName:String){
-        (activity as MainActivity).supportActionBar?.subtitle = repoName.capitalize()
-         viewModel.setParams(Pair(ownerName,repoName))
     }
 
     override fun onItemClick(view: View, pull: Pull) {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(pull.url))
         startActivity(browserIntent)
     }
-
 
     companion object {
 
