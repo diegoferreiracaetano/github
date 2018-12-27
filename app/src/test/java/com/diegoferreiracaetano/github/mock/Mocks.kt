@@ -5,7 +5,7 @@ import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.repo.Repo
 import java.util.*
 
-object GitHubFake {
+object Mocks {
 
     val owner =  Owner(1,"Diego","http://www.diego.com.br")
 

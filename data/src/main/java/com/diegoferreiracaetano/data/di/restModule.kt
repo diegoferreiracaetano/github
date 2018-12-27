@@ -51,7 +51,7 @@ val restModule: Module = module {
 
     single {
 
-       val retrofit = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
                 .client(get())
                 .baseUrl(BuildConfig.END_POINT)
                 .addConverterFactory(GsonConverterFactory.create())

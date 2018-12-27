@@ -47,7 +47,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$libs.okhttp"
     implementation "com.squareup.okhttp3:okhttp-urlconnection:$libs.okhttpUrlconnection"
     implementation "com.squareup.okhttp3:logging-interceptor:$libs.loggingInterceptor"
-
+    implementation "com.squareup.okhttp3:mockwebserver:$libs.okhttp"
 
     testImplementation "junit:junit:$test.junit"
     androidTestImplementation "androidx.test:runner:$test.runner"

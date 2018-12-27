@@ -6,7 +6,7 @@ import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
-import com.diegoferreiracaetano.github.mock.GitHubFake
+import com.diegoferreiracaetano.github.mock.Mocks
 import com.diegoferreiracaetano.github.mock.PullDataSource
 import com.diegoferreiracaetano.github.ui.pull.PullViewModel
 import org.hamcrest.core.Is.`is`
@@ -25,7 +25,7 @@ class PullViewModelTest{
     @Mock private lateinit var callback: CallbackPullInteractor
 
     private lateinit var viewModel: PullViewModel
-    private val param = Pair(GitHubFake.owner.name,GitHubFake.repo.name)
+    private val param = Pair(Mocks.owner.name, Mocks.repo.name)
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -65,7 +65,7 @@ class PullViewModelTest{
 
         // Given
 
-        val pull = listOf(GitHubFake.pull)
+        val pull = listOf(Mocks.pull)
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When

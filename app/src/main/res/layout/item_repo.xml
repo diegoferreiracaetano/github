@@ -83,7 +83,7 @@
                 tools:text="@tools:sample/lorem" />
 
             <TextView
-                android:id="@+id/pull_date"
+                android:id="@+id/start_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -94,35 +94,35 @@
                 tools:text="@tools:sample/us_zipcodes" />
 
             <TextView
-                android:id="@+id/forks"
+                android:id="@+id/fork_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@{String.valueOf(repo.forks)}"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/start_icon"
                 app:layout_constraintTop_toBottomOf="@+id/pull_body"
                 tools:text="@tools:sample/us_zipcodes" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/start_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="3dp"
                 android:contentDescription="@string/starts"
-                app:layout_constraintEnd_toStartOf="@+id/pull_date"
+                app:layout_constraintEnd_toStartOf="@+id/start_count"
                 app:layout_constraintTop_toBottomOf="@+id/pull_body"
                 app:srcCompat="@drawable/ic_star" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/fork_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="4dp"
                 android:contentDescription="@string/forks"
-                app:layout_constraintEnd_toStartOf="@+id/forks"
+                app:layout_constraintEnd_toStartOf="@+id/fork_count"
                 app:layout_constraintTop_toBottomOf="@+id/pull_body"
                 app:srcCompat="@drawable/ic_git_branch" />
 

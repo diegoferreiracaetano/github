@@ -6,7 +6,7 @@ import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.interactor.CallbackRepoInteractor
 import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
-import com.diegoferreiracaetano.github.mock.GitHubFake
+import com.diegoferreiracaetano.github.mock.Mocks
 import com.diegoferreiracaetano.github.mock.RepoDataSource
 import com.diegoferreiracaetano.github.ui.repo.RepoViewModel
 import org.hamcrest.core.Is.`is`
@@ -64,7 +64,7 @@ class RepoViewModelTest{
 
         // Given
 
-        val repo = listOf(GitHubFake.repo)
+        val repo = listOf(Mocks.repo)
         val dataSource = RepoDataSource.RepoDataSourceFactory(repo)
 
         // When
