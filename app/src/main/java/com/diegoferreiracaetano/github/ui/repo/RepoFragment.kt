@@ -10,7 +10,6 @@ import androidx.navigation.Navigation
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.github.R
 import com.diegoferreiracaetano.github.databinding.FragmentRepoBinding
-import com.diegoferreiracaetano.github.ui.pull.PullFragment
 import com.diegoferreiracaetano.github.ui.repo.adapter.RepoViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,7 +19,6 @@ class RepoFragment : Fragment(),RepoViewHolder.OnItemClickListener{
 
     val viewModel: RepoViewModel by viewModel()
     private lateinit var binding: FragmentRepoBinding
-    private var pullFragment : PullFragment? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -32,9 +30,7 @@ class RepoFragment : Fragment(),RepoViewHolder.OnItemClickListener{
     }
 
     override fun onItemClick(view: View,repo: Repo) {
-        val bundle = Bundle()
-        bundle.putSerializable(PullFragment.EXTRA_REPO_NAME, repo.name)
-        bundle.putSerializable(PullFragment.EXTRA_OWNER_NAME, repo.owner.name)
-        Navigation.findNavController(view).navigate(R.id.action_next, bundle)
+        val action = RepoFragmentDirections.actionNext(repo.name, repo.owner.name)
+        Navigation.findNavController(view).navigate(action)
     }
 }

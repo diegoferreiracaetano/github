@@ -10,7 +10,7 @@ apply plugin: "androidx.navigation.safeargs"
 
 def cfg = rootProject.ext.configuration
 def libs = rootProject.ext.libraries
-def test = rootProject.ext.testingLibraries
+def testLibs = rootProject.ext.testingLibraries
 
 android {
     compileSdkVersion 28
@@ -31,6 +31,10 @@ android {
 
     dataBinding {
         enabled = true
+    }
+    sourceSets {
+        test.java.srcDirs 'src/testUtils/java'
+        androidTest.java.srcDirs 'src/testUtils/java'
     }
 }
 
@@ -54,20 +58,26 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:$libs.nav_version"
     implementation "de.hdodenhof:circleimageview:$libs.circleImage"
     implementation "androidx.room:room-rxjava2:$libs.room"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$libs.retrofitRx"
+    implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$libs.okhttp"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$libs.okhttpUrlconnection"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libs.loggingInterceptor"
+    implementation "com.squareup.okhttp3:mockwebserver:$libs.okhttp"
 
     kapt "androidx.room:room-compiler:$libs.room"
 
-    testImplementation "junit:junit:$test.junitExt"
+    testImplementation "junit:junit:$testLibs.junitExt"
     testImplementation "androidx.arch.core:core-testing:$libs.extensions"
-    testImplementation "org.koin:koin-test:$test.koin"
+    testImplementation "org.koin:koin-test:$testLibs.koin"
     testImplementation "androidx.paging:paging-common:$libs.paging"
 
-    androidTestImplementation "org.koin:koin-test:$test.koin"
-    androidTestImplementation "androidx.test:rules:$test.rules"
-    androidTestImplementation "androidx.test:runner:$test.runner"
-    androidTestImplementation "androidx.test.ext:junit:$test.junitExt"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$test.espresso"
-    androidTestImplementation ("androidx.test.espresso:espresso-contrib:$test.espresso") {
+    androidTestImplementation "org.koin:koin-test:$testLibs.koin"
+    androidTestImplementation "androidx.test:rules:$testLibs.rules"
+    androidTestImplementation "androidx.test:runner:$testLibs.runner"
+    androidTestImplementation "androidx.test.ext:junit:$testLibs.junitExt"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$testLibs.espresso"
+    androidTestImplementation ("androidx.test.espresso:espresso-contrib:$testLibs.espresso") {
         exclude module: 'appcompat-v7'
         exclude module: 'support-v4'
         exclude module: 'support-annotations'

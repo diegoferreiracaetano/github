@@ -32,10 +32,9 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (arguments != null) {
-            val repoName = arguments!!.getString(EXTRA_REPO_NAME)
-            val ownerName = arguments!!.getString(EXTRA_OWNER_NAME)
-            viewModel.setParams(Pair(ownerName,repoName))
+        arguments?.let {
+            val params = PullFragmentArgs.fromBundle(it)
+            viewModel.setParams(Pair(params.ownername, params.reponame))
         }
     }
 
@@ -43,11 +42,4 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(pull.url))
         startActivity(browserIntent)
     }
-
-    companion object {
-
-        val EXTRA_REPO_NAME = "EXTRA_REPO_NAME"
-        val EXTRA_OWNER_NAME = "EXTRA_OWNER_NAME"
-    }
-
 }

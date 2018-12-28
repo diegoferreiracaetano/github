@@ -6,9 +6,9 @@ import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
-import com.diegoferreiracaetano.github.mock.Mocks
 import com.diegoferreiracaetano.github.mock.PullDataSource
 import com.diegoferreiracaetano.github.ui.pull.PullViewModel
+import mock.Mocks
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -40,23 +40,18 @@ class PullViewModelTest{
     @Test
     @Throws(Exception::class)
     fun `Given pulls, When load pull, Should update result`() {
-
         // Given
-
         val pull = emptyList<Pull>()
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When
-
         `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first,param.second))).thenReturn(dataSource)
         viewModel = PullViewModel(getPullInteractor,callback)
 
         // Should
-
         viewModel.result.observeForever{
             assertThat(it, `is`(pull))
         }
-
     }
 
     @Test

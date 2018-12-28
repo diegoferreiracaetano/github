@@ -13,36 +13,30 @@
             name="callback"
             type="com.diegoferreiracaetano.github.ui.pull.adapter.PullViewHolder.OnItemClickListener" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:onRefreshListener="@{() -> viewModel.refresh()}"
+        app:setLoad="@{viewModel.initialLoad}"
         tools:context=".ui.pull.PullFragment">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:onRefreshListener="@{() -> viewModel.refresh()}"
-            android:layout_marginBottom="10dp"
-            app:setLoad="@{viewModel.initialLoad}">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:pullAdapter="@{viewModel.result}"
-                app:pullCallback="@{callback}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:pullNetworkEvents="@{viewModel.networkState}"
-                app:pullRetry="@{()-> viewModel.retry()}"
-                tools:listitem="@layout/item_pull" />
-
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:pullAdapter="@{viewModel.result}"
+            app:pullCallback="@{callback}"
+            app:pullNetworkEvents="@{viewModel.networkState}"
+            app:pullRetry="@{()-> viewModel.retry()}"
+            tools:listitem="@layout/item_pull" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container_not_found_pull"
@@ -81,7 +75,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

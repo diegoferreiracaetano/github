@@ -18,4 +18,8 @@ data class RepoRemoteEntity (
         var owner: Owner) :Serializable{
 
     fun convertToRepo() = Repo(id, name, description, starts, forks, owner)
+
+    companion object {
+        fun parse(repo: Repo) = RepoRemoteEntity(repo.id, repo.name, repo.description, repo.starts, repo.forks, repo.owner)
+    }
 }

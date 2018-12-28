@@ -20,4 +20,8 @@ data class PullRemoteEntity(
         var repoName: String) : Serializable {
 
     fun convertToPull() = Pull(id, title, date, body, url, owner, "", "")
+
+    companion object {
+        fun parse(pull: Pull) = PullRemoteEntity(pull.id, pull.title, pull.date, pull.body, pull.url, pull.owner, pull.ownerName, pull.repoName)
+    }
 }

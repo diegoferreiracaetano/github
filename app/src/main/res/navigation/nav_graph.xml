@@ -22,6 +22,12 @@
         android:id="@+id/pullFragment"
         android:name="com.diegoferreiracaetano.github.ui.pull.PullFragment"
         android:label="@string/pull_request"
-        tools:layout="@layout/fragment_pull"
-        />
+        tools:layout="@layout/fragment_pull">
+        <argument
+            android:name="REPO_NAME"
+            app:argType="string" />
+        <argument
+            android:name="OWNER_NAME"
+            app:argType="string" />
+    </fragment>
 </navigation>

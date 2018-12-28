@@ -13,37 +13,30 @@
             name="status"
             type="com.diegoferreiracaetano.domain.utils.Status" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:onRefreshListener="@{() -> viewModel.refresh()}"
+        app:setLoad="@{viewModel.initialLoad}"
         tools:context=".ui.repo.RepoFragment">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="10dp"
-            app:onRefreshListener="@{() -> viewModel.refresh()}"
-            app:setLoad="@{viewModel.initialLoad}">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:repoAdapter="@{viewModel.result}"
-                app:repoCallback="@{callback}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:repoNetworkEvents="@{viewModel.networkState}"
-                app:repoRetry="@{()-> viewModel.retry()}"
-                tools:listitem="@layout/item_repo" />
-
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:repoAdapter="@{viewModel.result}"
+            app:repoCallback="@{callback}"
+            app:repoNetworkEvents="@{viewModel.networkState}"
+            app:repoRetry="@{()-> viewModel.retry()}"
+            tools:listitem="@layout/item_repo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -82,6 +75,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
