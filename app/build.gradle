@@ -38,6 +38,18 @@ android {
     }
 }
 
+configurations {
+    ktlint
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "src/**/*.kt"
+    // args "--reporter=checkstyle, output=${buildDir}/ktlint.xml
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -66,6 +78,8 @@ dependencies {
     implementation "com.squareup.okhttp3:mockwebserver:$libs.okhttp"
 
     kapt "androidx.room:room-compiler:$libs.room"
+
+    ktlint "com.github.shyiko:ktlint:0.15.0"
 
     testImplementation "junit:junit:$testLibs.junitExt"
     testImplementation "androidx.arch.core:core-testing:$libs.extensions"

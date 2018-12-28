@@ -11,11 +11,11 @@ import com.diegoferreiracaetano.domain.repo.interactor.CallbackRepoInteractor
 import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 import com.diegoferreiracaetano.domain.utils.Constants
 
-class RepoViewModel(getRepoInteractor: GetListRepoInteractor,
-                    private val callback: CallbackRepoInteractor) : ViewModel() {
+class RepoViewModel(getRepoInteractor: GetListRepoInteractor, val callback: CallbackRepoInteractor)
+    : ViewModel() {
 
     val itemSelected = MutableLiveData<Repo>()
-    val result : LiveData<PagedList<Repo>>
+    val result: LiveData<PagedList<Repo>>
 
     init {
 
@@ -42,13 +42,11 @@ class RepoViewModel(getRepoInteractor: GetListRepoInteractor,
         callback.onZeroItemsLoaded()
     }
 
-    val networkState = Transformations.switchMap(result,{callback.networkState})
-    val initialLoad =  Transformations.switchMap(result,{callback.initialLoad})
+    val networkState = Transformations.switchMap(result, { callback.networkState })
+    val initialLoad = Transformations.switchMap(result, { callback.initialLoad })
 
     override fun onCleared() {
         super.onCleared()
         callback.clear()
     }
-
-
 }

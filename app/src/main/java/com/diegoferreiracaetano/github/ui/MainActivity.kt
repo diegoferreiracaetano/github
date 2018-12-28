@@ -7,7 +7,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.diegoferreiracaetano.github.R
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,9 +17,7 @@ class MainActivity : AppCompatActivity() {
                 .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
 
         NavigationUI.setupActionBarWithNavController(this, host.navController)
-
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
-
 }

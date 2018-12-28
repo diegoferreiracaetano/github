@@ -1,6 +1,5 @@
 package com.diegoferreiracaetano.github.ui.pull
 
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,14 +14,12 @@ import com.diegoferreiracaetano.github.databinding.FragmentPullBinding
 import com.diegoferreiracaetano.github.ui.pull.adapter.PullViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
+class PullFragment : Fragment(), PullViewHolder.OnItemClickListener {
     val viewModel: PullViewModel by viewModel()
 
     private lateinit var binding: FragmentPullBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_pull, container, false)
         binding.setLifecycleOwner(this@PullFragment)
         binding.viewModel = viewModel
@@ -32,8 +29,8 @@ class PullFragment : Fragment(),PullViewHolder.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            val params = PullFragmentArgs.fromBundle(it)
+        arguments?.let { args ->
+            val params = PullFragmentArgs.fromBundle(args)
             viewModel.setParams(Pair(params.ownername, params.reponame))
         }
     }

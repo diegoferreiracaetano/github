@@ -13,16 +13,15 @@ import com.diegoferreiracaetano.github.databinding.FragmentRepoBinding
 import com.diegoferreiracaetano.github.ui.repo.adapter.RepoViewHolder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class RepoFragment : Fragment(),RepoViewHolder.OnItemClickListener{
-
+class RepoFragment : Fragment(), RepoViewHolder.OnItemClickListener {
 
     val viewModel: RepoViewModel by viewModel()
     private lateinit var binding: FragmentRepoBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_repo, container, false)
+    override fun onCreateView(inflater: LayoutInflater, cont: ViewGroup?, savedState: Bundle?): View {
+
+        binding = DataBindingUtil.inflate(layoutInflater,
+                R.layout.fragment_repo, cont, false)
         binding.setLifecycleOwner(this@RepoFragment)
         binding.viewModel = viewModel
         binding.callback = this

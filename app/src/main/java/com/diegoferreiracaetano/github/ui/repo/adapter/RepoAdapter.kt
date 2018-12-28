@@ -9,16 +9,15 @@ import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.R
 import com.diegoferreiracaetano.github.ui.NetworkStatusViewHolder
 
-class RepoAdapter(private val retryCallback: () -> Unit,
-                  private val listener: RepoViewHolder.OnItemClickListener) :
-         PagedListAdapter<Repo, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
+class RepoAdapter(private val retryCallback: () -> Unit, private val listener: RepoViewHolder.OnItemClickListener)
+    : PagedListAdapter<Repo, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
 
     private var networkState: NetworkState? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       return when (viewType) {
-            R.layout.item_repo -> RepoViewHolder.create(parent,listener)
-            R.layout.item_network_state -> NetworkStatusViewHolder.create(parent,retryCallback)
+        return when (viewType) {
+            R.layout.item_repo -> RepoViewHolder.create(parent, listener)
+            R.layout.item_network_state -> NetworkStatusViewHolder.create(parent, retryCallback)
             else -> throw IllegalArgumentException("unknown view type")
         }
     }
@@ -26,7 +25,7 @@ class RepoAdapter(private val retryCallback: () -> Unit,
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
             R.layout.item_repo -> (holder as RepoViewHolder).bindTo(getItem(position))
-            R.layout.item_network_state ->(holder as NetworkStatusViewHolder).bindTo(networkState)
+            R.layout.item_network_state -> (holder as NetworkStatusViewHolder).bindTo(networkState)
         }
     }
 
@@ -41,7 +40,6 @@ class RepoAdapter(private val retryCallback: () -> Unit,
             R.layout.item_network_state
         } else {
             R.layout.item_repo
-
         }
     }
 
@@ -60,7 +58,6 @@ class RepoAdapter(private val retryCallback: () -> Unit,
         } else if (hasExtraRow && previousState !== newNetworkState) {
             notifyItemChanged(itemCount - 1)
         }
-
     }
 
     companion object {

@@ -25,7 +25,6 @@ import org.koin.standalone.StandAloneContext.loadKoinModules
 import org.koin.test.KoinTest
 import testModule
 
-
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest : KoinTest {
@@ -49,7 +48,6 @@ class MainActivityTest : KoinTest {
     fun tearDown() {
         server.shutdown()
     }
-
 
     @Test
     fun givenSomethin_whenAnAction_shouldDoSomething() {

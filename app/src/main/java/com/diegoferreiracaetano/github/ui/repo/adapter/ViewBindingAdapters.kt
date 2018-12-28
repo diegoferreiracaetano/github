@@ -8,16 +8,16 @@ import com.diegoferreiracaetano.domain.utils.NetworkState
 
 object ViewBindingAdapters{
     @JvmStatic
-    @BindingAdapter("repoAdapter","repoRetry","repoCallback","repoNetworkEvents", requireAll= false)
-    fun RecyclerView.setReviewAdapter(items: PagedList<Repo>?, retryCallback: () -> Unit,
-                                      listener: RepoViewHolder.OnItemClickListener,
-                                      networkState: NetworkState?) {
+    @BindingAdapter("repoAdapter", "repoRetry", "repoCallback", "repoNetworkEvents", requireAll = false)
+    fun RecyclerView.setReviewAdapter(
+            items: PagedList<Repo>?,
+            retryCallback: () -> Unit,
+            listener: RepoViewHolder.OnItemClickListener,
+            networkState: NetworkState?) {
         items?.let {
-            if(adapter == null)
-                adapter = RepoAdapter(retryCallback,listener)
+            if (adapter == null) adapter = RepoAdapter(retryCallback, listener)
             (adapter as RepoAdapter).submitList(items)
             (adapter as RepoAdapter).setNetworkState(networkState)
-
         }
     }
 }
