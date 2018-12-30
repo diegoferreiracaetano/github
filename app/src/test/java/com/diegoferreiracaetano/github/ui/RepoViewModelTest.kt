@@ -19,7 +19,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
-class RepoViewModelTest{
+class RepoViewModelTest {
 
     @Mock private lateinit var getRepoInteractor: GetListRepoInteractor
     @Mock private lateinit var callback: CallbackRepoInteractor
@@ -35,7 +35,6 @@ class RepoViewModelTest{
         MockitoAnnotations.initMocks(this)
     }
 
-
     @Test
     @Throws(Exception::class)
     fun `Given repos, When load repo, Should update result`() {
@@ -48,14 +47,11 @@ class RepoViewModelTest{
         // When
 
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
-        viewModel = RepoViewModel(getRepoInteractor,callback)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
 
         // Should
 
-        viewModel.result.observeForever{
-            assertThat(it, `is`(repo))
-        }
-
+        viewModel.result.observeForever { assertThat(it, `is`(repo)) }
     }
 
     @Test
@@ -70,13 +66,11 @@ class RepoViewModelTest{
         // When
 
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
-        viewModel = RepoViewModel(getRepoInteractor,callback)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
 
         // Should
 
-        viewModel.result.observeForever{
-            assertThat(it, `is`(repo))
-        }
+        viewModel.result.observeForever { assertThat(it, `is`(repo)) }
     }
 
     @Test
@@ -94,10 +88,10 @@ class RepoViewModelTest{
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
         `when`(callback.networkState).thenReturn(networkState)
 
-        viewModel = RepoViewModel(getRepoInteractor,callback)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
         // Should
 
-        viewModel.networkState.observeForever{
+        viewModel.networkState.observeForever {
             assertThat(it, `is`(networkState.value))
         }
     }

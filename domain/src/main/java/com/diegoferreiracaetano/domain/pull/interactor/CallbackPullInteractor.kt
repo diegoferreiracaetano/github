@@ -10,13 +10,15 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 import io.reactivex.subscribers.DisposableSubscriber
 
-class CallbackPullInteractor(private val saveInicialInteractor: SavePullInteractor,
-                             private val getPaginationInteractor: GetPaginationPullInteractor) :
+class CallbackPullInteractor(
+    private val saveInicialInteractor: SavePullInteractor,
+    private val getPaginationInteractor: GetPaginationPullInteractor
+) :
         PagedList.BoundaryCallback<Pull>() {
 
     private var disposable = CompositeDisposable()
     private var retryCompletable: Completable? = null
-    private var params = MutableLiveData<Pair<String,String>>()
+    private var params = MutableLiveData<Pair<String, String>>()
 
     val initialLoad = MutableLiveData<NetworkState>()
     val networkState = MutableLiveData<NetworkState>()
@@ -63,7 +65,6 @@ class CallbackPullInteractor(private val saveInicialInteractor: SavePullInteract
                         }
 
                         override fun onNext(t: List<Long>) {
-
                         }
 
                         override fun onError(t: Throwable) {
@@ -93,12 +94,11 @@ class CallbackPullInteractor(private val saveInicialInteractor: SavePullInteract
             this.retryCompletable = Completable.fromAction(action)
         }
     }
-    fun setParam(params: Pair<String,String>){
+    fun setParam(params: Pair<String, String>) {
         this.params.value = params
     }
 
-    fun clear(){
+    fun clear() {
         disposable.clear()
     }
-
 }

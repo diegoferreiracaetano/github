@@ -12,7 +12,6 @@ abstract class InteractorFlowable<T, R : InteractorFlowable.Request> {
         return create(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
     }
 
     abstract class Request

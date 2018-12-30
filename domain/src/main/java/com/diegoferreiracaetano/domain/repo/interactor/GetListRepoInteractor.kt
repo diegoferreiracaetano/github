@@ -4,10 +4,9 @@ import androidx.paging.DataSource
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 
-class GetListRepoInteractor(val repository: RepoRepository){
+class GetListRepoInteractor(val repository: RepoRepository) {
 
     fun execute(): DataSource.Factory<Int, Repo> {
         return repository.getList()
     }
-
 }

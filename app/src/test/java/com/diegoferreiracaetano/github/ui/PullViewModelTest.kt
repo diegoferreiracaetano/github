@@ -19,7 +19,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
-class PullViewModelTest{
+class PullViewModelTest {
 
     @Mock private lateinit var getPullInteractor: GetListPullInteractor
     @Mock private lateinit var callback: CallbackPullInteractor
@@ -36,7 +36,6 @@ class PullViewModelTest{
         MockitoAnnotations.initMocks(this)
     }
 
-
     @Test
     @Throws(Exception::class)
     fun `Given pulls, When load pull, Should update result`() {
@@ -45,13 +44,12 @@ class PullViewModelTest{
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When
-        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first,param.second))).thenReturn(dataSource)
-        viewModel = PullViewModel(getPullInteractor,callback)
+        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first, param.second)))
+                .thenReturn(dataSource)
+        viewModel = PullViewModel(getPullInteractor, callback)
 
         // Should
-        viewModel.result.observeForever{
-            assertThat(it, `is`(pull))
-        }
+        viewModel.result.observeForever { assertThat(it, `is`(pull)) }
     }
 
     @Test
@@ -64,15 +62,14 @@ class PullViewModelTest{
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When
+        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first, param.second)))
+                .thenReturn(dataSource)
 
-        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first,param.second))).thenReturn(dataSource)
-        viewModel = PullViewModel(getPullInteractor,callback)
+        viewModel = PullViewModel(getPullInteractor, callback)
 
         // Should
 
-        viewModel.result.observeForever{
-            assertThat(it, `is`(pull))
-        }
+        viewModel.result.observeForever { assertThat(it, `is`(pull)) }
     }
 
     @Test
@@ -88,13 +85,15 @@ class PullViewModelTest{
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When
-        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first,param.second))).thenReturn(dataSource)
+        `when`(getPullInteractor.execute(GetListPullInteractor.Request(param.first, param.second)))
+                .thenReturn(dataSource)
+
         `when`(callback.networkState).thenReturn(networkState)
-        viewModel = PullViewModel(getPullInteractor,callback)
+        viewModel = PullViewModel(getPullInteractor, callback)
 
         // Should
 
-        viewModel.networkState.observeForever{
+        viewModel.networkState.observeForever {
             assertThat(it, `is`(networkState.value))
         }
     }

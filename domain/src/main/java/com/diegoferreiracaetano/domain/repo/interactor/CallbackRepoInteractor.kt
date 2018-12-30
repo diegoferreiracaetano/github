@@ -10,8 +10,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 import io.reactivex.subscribers.DisposableSubscriber
 
-class CallbackRepoInteractor(private val saveRepoInteractor: SaveRepoInteractor,
-                             private val getPaginationRepoInteractor: GetPaginationRepoInteractor) : PagedList.BoundaryCallback<Repo>() {
+class CallbackRepoInteractor(
+    private val saveRepoInteractor: SaveRepoInteractor,
+    private val getPaginationRepoInteractor: GetPaginationRepoInteractor
+) : PagedList.BoundaryCallback<Repo>() {
 
     private var disposable = CompositeDisposable()
     private var retryCompletable: Completable? = null
@@ -20,16 +22,16 @@ class CallbackRepoInteractor(private val saveRepoInteractor: SaveRepoInteractor,
 
     override fun onZeroItemsLoaded() {
         disposable.add(saveRepoInteractor.execute(SaveRepoInteractor.Request(1))
-                .subscribeWith(object : DisposableSubscriber<List<Long>>(){
+                .subscribeWith(object : DisposableSubscriber<List<Long>>() {
                     override fun onStart() {
                         super.onStart()
                         initialLoad.postValue(NetworkState.LOADING)
                     }
 
                     override fun onNext(t: List<Long>) {
-                        if(t.isEmpty()){
+                        if (t.isEmpty()) {
                             initialLoad.postValue(NetworkState.IS_EMPTY)
-                        }else{
+                        } else {
                             initialLoad.postValue(NetworkState.LOADED)
                         }
                     }
@@ -57,7 +59,6 @@ class CallbackRepoInteractor(private val saveRepoInteractor: SaveRepoInteractor,
                     }
 
                     override fun onNext(t: List<Long>) {
-
                     }
 
                     override fun onError(t: Throwable) {
@@ -87,7 +88,7 @@ class CallbackRepoInteractor(private val saveRepoInteractor: SaveRepoInteractor,
         }
     }
 
-    fun clear(){
+    fun clear() {
         disposable.clear()
     }
 }

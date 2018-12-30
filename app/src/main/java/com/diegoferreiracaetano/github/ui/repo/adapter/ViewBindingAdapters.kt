@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.utils.NetworkState
 
-object ViewBindingAdapters{
+object ViewBindingAdapters {
     @JvmStatic
     @BindingAdapter("repoAdapter", "repoRetry", "repoCallback", "repoNetworkEvents", requireAll = false)
     fun RecyclerView.setReviewAdapter(
-            items: PagedList<Repo>?,
-            retryCallback: () -> Unit,
-            listener: RepoViewHolder.OnItemClickListener,
-            networkState: NetworkState?) {
+        items: PagedList<Repo>?,
+        retryCallback: () -> Unit,
+        listener: RepoViewHolder.OnItemClickListener,
+        networkState: NetworkState?
+    ) {
         items?.let {
             if (adapter == null) adapter = RepoAdapter(retryCallback, listener)
             (adapter as RepoAdapter).submitList(items)

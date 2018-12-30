@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs"
 
+
 def cfg = rootProject.ext.configuration
 def libs = rootProject.ext.libraries
 def testLibs = rootProject.ext.testingLibraries
@@ -38,17 +39,30 @@ android {
     }
 }
 
+
 configurations {
     ktlint
 }
 
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
-    classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
     args "src/**/*.kt"
-    // args "--reporter=checkstyle, output=${buildDir}/ktlint.xml
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/shyiko/ktlint#usage for more
 }
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "src/**/*.kt"
+}
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -78,8 +92,7 @@ dependencies {
     implementation "com.squareup.okhttp3:mockwebserver:$libs.okhttp"
 
     kapt "androidx.room:room-compiler:$libs.room"
-
-    ktlint "com.github.shyiko:ktlint:0.15.0"
+    ktlint "com.github.shyiko:ktlint:$libs.ktlint"
 
     testImplementation "junit:junit:$testLibs.junitExt"
     testImplementation "androidx.arch.core:core-testing:$libs.extensions"

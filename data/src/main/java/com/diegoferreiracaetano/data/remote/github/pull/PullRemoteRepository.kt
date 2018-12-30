@@ -8,11 +8,11 @@ import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
 
-class PullRemoteRepository(private val api : GithubApi) : PullRepository {
+class PullRemoteRepository(private val api: GithubApi) : PullRepository {
 
-    override fun getList(owner:String,repo:String,page : Int): Flowable<List<Pull>> {
-        return api.getPull(owner,repo,page)
-                .flatMap{Flowable.fromIterable(it)}
+    override fun getList(owner: String, repo: String, page: Int): Flowable<List<Pull>> {
+        return api.getPull(owner, repo, page)
+                .flatMap { Flowable.fromIterable(it) }
                 .map { it.convertToPull() }
                 .flatMapMaybe { Maybe.just(it.copy(ownerName = owner, repoName = repo)) }
                 .toList()

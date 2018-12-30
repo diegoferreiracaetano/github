@@ -13,7 +13,6 @@ import com.diegoferreiracaetano.domain.utils.Constants.REMOTE
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 
-
 val interactorModule: Module = module {
 
     single { GetListRepoInteractor(get(LOCAL)) }
@@ -25,5 +24,4 @@ val interactorModule: Module = module {
     single { SavePullInteractor(get(LOCAL), get(REMOTE)) }
     single { GetPaginationPullInteractor(get(LOCAL)) }
     single { CallbackPullInteractor(get(), get()) }
-
 }

@@ -2,7 +2,6 @@ package com.diegoferreiracaetano.data.di
 
 import com.diegoferreiracaetano.data.BuildConfig
 import com.diegoferreiracaetano.data.remote.github.api.GithubApi
-
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -15,15 +14,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-
-private val REQUEST_TIMEOUT :Long = 60
+private val REQUEST_TIMEOUT: Long = 60
 
 val restModule: Module = module {
 
     single {
 
         val httpClient = OkHttpClient().newBuilder()
-            .connectTimeout(REQUEST_TIMEOUT , TimeUnit.SECONDS)
+            .connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
 
@@ -46,7 +44,6 @@ val restModule: Module = module {
         })
 
         httpClient.build()
-
     }
 
     single {

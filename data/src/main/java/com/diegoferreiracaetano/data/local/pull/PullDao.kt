@@ -17,5 +17,5 @@ interface PullDao {
     fun getAll(ownerName: String, repoName: String): DataSource.Factory<Int, PullLocalEntity>
 
     @Query("SELECT COUNT(*) FROM pull")
-    fun getTotal() : Single<Int>
+    fun getTotal(): Single<Int>
 }

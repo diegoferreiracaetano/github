@@ -7,11 +7,11 @@ import com.diegoferreiracaetano.domain.repo.RepoRepository
 import io.reactivex.Flowable
 import io.reactivex.Single
 
-class RepoRemoteRepository(private val api : GithubApi) : RepoRepository {
+class RepoRemoteRepository(private val api: GithubApi) : RepoRepository {
 
     override fun getList(page: Int): Flowable<List<Repo>> {
         return api.getListRepo(page = page).map { it.items }
-                .flatMap { Flowable.fromIterable(it)}
+                .flatMap { Flowable.fromIterable(it) }
                 .map { it.convertToRepo() }
                 .toList()
                 .toFlowable()

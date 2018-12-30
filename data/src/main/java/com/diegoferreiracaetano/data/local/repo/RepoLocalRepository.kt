@@ -27,7 +27,6 @@ class RepoLocalRepository(private var dao: RepoDao) : RepoRepository {
     }
 
     override fun getTotal(): Single<Int> {
-       return dao.getTotal()
+        return dao.getTotal()
     }
-
 }

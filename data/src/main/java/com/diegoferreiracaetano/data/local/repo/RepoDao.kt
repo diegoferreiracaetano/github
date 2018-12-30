@@ -17,5 +17,5 @@ interface RepoDao {
     fun getAll(): DataSource.Factory<Int, RepoLocalEntity>
 
     @Query("SELECT COUNT(*) FROM repo")
-    fun getTotal() : Single<Int>
+    fun getTotal(): Single<Int>
 }

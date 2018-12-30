@@ -28,7 +28,7 @@ class RepoFragment : Fragment(), RepoViewHolder.OnItemClickListener {
         return binding.root
     }
 
-    override fun onItemClick(view: View,repo: Repo) {
+    override fun onItemClick(view: View, repo: Repo) {
         val action = RepoFragmentDirections.actionNext(repo.name, repo.owner.name)
         Navigation.findNavController(view).navigate(action)
     }

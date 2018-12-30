@@ -28,23 +28,46 @@ android {
 
 }
 
+configurations {
+    ktlint
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "src/**/*.kt"
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/shyiko/ktlint#usage for more
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    main = "com.github.shyiko.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "src/**/*.kt"
+}
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$libs.rxkotlin"
     implementation "io.reactivex.rxjava2:rxandroid:$libs.rxandroid"
     implementation "androidx.paging:paging-runtime:$libs.paging"
-
     implementation "org.koin:koin-androidx-scope:$libs.koin"
-
-
     implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
     implementation "androidx.room:room-rxjava2:$libs.room"
+
     kapt "androidx.room:room-compiler:$libs.room"
+    ktlint "com.github.shyiko:ktlint:$libs.ktlint"
 
     testImplementation "junit:junit:$test.junit"
     androidTestImplementation "androidx.test:runner:$test.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$test.espresso"
+
 }
 repositories {
     mavenCentral()

@@ -9,11 +9,11 @@ import io.reactivex.Single
 
 class PullLocalRepository(private var dao: PullDao) : PullRepository {
 
-    override fun getList(owner:String,repo:String,page : Int): Flowable<List<Pull>> {
+    override fun getList(owner: String, repo: String, page: Int): Flowable<List<Pull>> {
         return Flowable.empty()
     }
 
-    override fun getList(owner:String,repo:String): DataSource.Factory<Int, Pull> {
+    override fun getList(owner: String, repo: String): DataSource.Factory<Int, Pull> {
         return dao.getAll(owner, repo).map { it.convertToPull() }
     }
 

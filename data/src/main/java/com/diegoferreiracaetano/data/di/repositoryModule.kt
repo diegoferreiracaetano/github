@@ -8,16 +8,13 @@ import com.diegoferreiracaetano.domain.pull.PullRepository
 import com.diegoferreiracaetano.domain.repo.RepoRepository
 import com.diegoferreiracaetano.domain.utils.Constants.LOCAL
 import com.diegoferreiracaetano.domain.utils.Constants.REMOTE
-import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 
+val repositoryModule = module {
 
-val repositoryModule : Module = module {
+    single(REMOTE) { RepoRemoteRepository(get()) as RepoRepository }
+    single(LOCAL) { RepoLocalRepository(get()) as RepoRepository }
 
-    single(REMOTE) { RepoRemoteRepository(get()) as RepoRepository}
-    single(LOCAL) { RepoLocalRepository(get()) as RepoRepository}
-
-    single(REMOTE) { PullRemoteRepository(get()) as PullRepository}
-    single(LOCAL) { PullLocalRepository(get()) as PullRepository}
-
+    single(REMOTE) { PullRemoteRepository(get()) as PullRepository }
+    single(LOCAL) { PullLocalRepository(get()) as PullRepository }
 }

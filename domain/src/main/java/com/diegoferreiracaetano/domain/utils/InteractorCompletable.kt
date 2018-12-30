@@ -12,7 +12,6 @@ abstract class InteractorCompletable<R : InteractorCompletable.Request> {
         return create(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
     }
 
     abstract class Request
