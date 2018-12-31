@@ -20,8 +20,7 @@ class RepoFragment : Fragment(), RepoViewHolder.OnItemClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, cont: ViewGroup?, savedState: Bundle?): View {
 
-        binding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.fragment_repo, cont, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_repo, cont, false)
         binding.setLifecycleOwner(this@RepoFragment)
         binding.viewModel = viewModel
         binding.callback = this

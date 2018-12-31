@@ -1,8 +1,9 @@
 package mock
 
-object MockJson {
+object RepoJson {
+
     val REPO_SUCCESS = "{\n" +
-            "  \"total_count\": 5711684,\n" +
+            "  \"total_count\": 5718392,\n" +
             "  \"incomplete_results\": false,\n" +
             "  \"items\": [\n" +
             "    {\n" +
@@ -72,7 +73,7 @@ object MockJson {
             "      \"releases_url\": \"https://api.github.com/repos/iluwatar/java-design-patterns/releases{/id}\",\n" +
             "      \"deployments_url\": \"https://api.github.com/repos/iluwatar/java-design-patterns/deployments\",\n" +
             "      \"created_at\": \"2014-08-09T16:45:18Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T14:18:23Z\",\n" +
+            "      \"updated_at\": \"2018-12-30T21:57:11Z\",\n" +
             "      \"pushed_at\": \"2018-12-23T08:39:40Z\",\n" +
             "      \"git_url\": \"git://github.com/iluwatar/java-design-patterns.git\",\n" +
             "      \"ssh_url\": \"git@github.com:iluwatar/java-design-patterns.git\",\n" +
@@ -80,15 +81,15 @@ object MockJson {
             "      \"svn_url\": \"https://github.com/iluwatar/java-design-patterns\",\n" +
             "      \"homepage\": \"http://java-design-patterns.com\",\n" +
             "      \"size\": 18696,\n" +
-            "      \"stargazers_count\": 43016,\n" +
-            "      \"watchers_count\": 43016,\n" +
+            "      \"stargazers_count\": 43074,\n" +
+            "      \"watchers_count\": 43074,\n" +
             "      \"language\": \"Java\",\n" +
             "      \"has_issues\": true,\n" +
             "      \"has_projects\": false,\n" +
             "      \"has_downloads\": true,\n" +
             "      \"has_wiki\": true,\n" +
             "      \"has_pages\": true,\n" +
-            "      \"forks_count\": 13971,\n" +
+            "      \"forks_count\": 13993,\n" +
             "      \"mirror_url\": null,\n" +
             "      \"archived\": false,\n" +
             "      \"open_issues_count\": 182,\n" +
@@ -99,9 +100,9 @@ object MockJson {
             "        \"url\": \"https://api.github.com/licenses/mit\",\n" +
             "        \"node_id\": \"MDc6TGljZW5zZTEz\"\n" +
             "      },\n" +
-            "      \"forks\": 13971,\n" +
+            "      \"forks\": 13993,\n" +
             "      \"open_issues\": 182,\n" +
-            "      \"watchers\": 43016,\n" +
+            "      \"watchers\": 43074,\n" +
             "      \"default_branch\": \"master\",\n" +
             "      \"score\": 1.0\n" +
             "    },\n" +
@@ -172,26 +173,26 @@ object MockJson {
             "      \"releases_url\": \"https://api.github.com/repos/elastic/elasticsearch/releases{/id}\",\n" +
             "      \"deployments_url\": \"https://api.github.com/repos/elastic/elasticsearch/deployments\",\n" +
             "      \"created_at\": \"2010-02-08T13:20:56Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T13:59:09Z\",\n" +
-            "      \"pushed_at\": \"2018-12-28T13:58:21Z\",\n" +
+            "      \"updated_at\": \"2018-12-30T19:59:54Z\",\n" +
+            "      \"pushed_at\": \"2018-12-30T19:04:02Z\",\n" +
             "      \"git_url\": \"git://github.com/elastic/elasticsearch.git\",\n" +
             "      \"ssh_url\": \"git@github.com:elastic/elasticsearch.git\",\n" +
             "      \"clone_url\": \"https://github.com/elastic/elasticsearch.git\",\n" +
             "      \"svn_url\": \"https://github.com/elastic/elasticsearch\",\n" +
             "      \"homepage\": \"https://www.elastic.co/products/elasticsearch\",\n" +
-            "      \"size\": 548817,\n" +
-            "      \"stargazers_count\": 37188,\n" +
-            "      \"watchers_count\": 37188,\n" +
+            "      \"size\": 548874,\n" +
+            "      \"stargazers_count\": 37221,\n" +
+            "      \"watchers_count\": 37221,\n" +
             "      \"language\": \"Java\",\n" +
             "      \"has_issues\": true,\n" +
             "      \"has_projects\": true,\n" +
             "      \"has_downloads\": true,\n" +
             "      \"has_wiki\": false,\n" +
             "      \"has_pages\": false,\n" +
-            "      \"forks_count\": 12515,\n" +
+            "      \"forks_count\": 12530,\n" +
             "      \"mirror_url\": null,\n" +
             "      \"archived\": false,\n" +
-            "      \"open_issues_count\": 1863,\n" +
+            "      \"open_issues_count\": 1874,\n" +
             "      \"license\": {\n" +
             "        \"key\": \"other\",\n" +
             "        \"name\": \"Other\",\n" +
@@ -199,9 +200,9 @@ object MockJson {
             "        \"url\": null,\n" +
             "        \"node_id\": \"MDc6TGljZW5zZTA=\"\n" +
             "      },\n" +
-            "      \"forks\": 12515,\n" +
-            "      \"open_issues\": 1863,\n" +
-            "      \"watchers\": 37188,\n" +
+            "      \"forks\": 12530,\n" +
+            "      \"open_issues\": 1874,\n" +
+            "      \"watchers\": 37221,\n" +
             "      \"default_branch\": \"master\",\n" +
             "      \"score\": 1.0\n" +
             "    },\n" +
@@ -272,26 +273,26 @@ object MockJson {
             "      \"releases_url\": \"https://api.github.com/repos/ReactiveX/RxJava/releases{/id}\",\n" +
             "      \"deployments_url\": \"https://api.github.com/repos/ReactiveX/RxJava/deployments\",\n" +
             "      \"created_at\": \"2013-01-08T20:11:48Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T14:13:15Z\",\n" +
-            "      \"pushed_at\": \"2018-12-27T19:00:38Z\",\n" +
+            "      \"updated_at\": \"2018-12-30T17:49:52Z\",\n" +
+            "      \"pushed_at\": \"2018-12-28T22:27:33Z\",\n" +
             "      \"git_url\": \"git://github.com/ReactiveX/RxJava.git\",\n" +
             "      \"ssh_url\": \"git@github.com:ReactiveX/RxJava.git\",\n" +
             "      \"clone_url\": \"https://github.com/ReactiveX/RxJava.git\",\n" +
             "      \"svn_url\": \"https://github.com/ReactiveX/RxJava\",\n" +
             "      \"homepage\": \"\",\n" +
-            "      \"size\": 72649,\n" +
-            "      \"stargazers_count\": 36965,\n" +
-            "      \"watchers_count\": 36965,\n" +
+            "      \"size\": 72667,\n" +
+            "      \"stargazers_count\": 36983,\n" +
+            "      \"watchers_count\": 36983,\n" +
             "      \"language\": \"Java\",\n" +
             "      \"has_issues\": true,\n" +
             "      \"has_projects\": true,\n" +
             "      \"has_downloads\": true,\n" +
             "      \"has_wiki\": true,\n" +
             "      \"has_pages\": true,\n" +
-            "      \"forks_count\": 6317,\n" +
+            "      \"forks_count\": 6318,\n" +
             "      \"mirror_url\": null,\n" +
             "      \"archived\": false,\n" +
-            "      \"open_issues_count\": 28,\n" +
+            "      \"open_issues_count\": 26,\n" +
             "      \"license\": {\n" +
             "        \"key\": \"apache-2.0\",\n" +
             "        \"name\": \"Apache License 2.0\",\n" +
@@ -299,9 +300,9 @@ object MockJson {
             "        \"url\": \"https://api.github.com/licenses/apache-2.0\",\n" +
             "        \"node_id\": \"MDc6TGljZW5zZTI=\"\n" +
             "      },\n" +
-            "      \"forks\": 6317,\n" +
-            "      \"open_issues\": 28,\n" +
-            "      \"watchers\": 36965,\n" +
+            "      \"forks\": 6318,\n" +
+            "      \"open_issues\": 26,\n" +
+            "      \"watchers\": 36983,\n" +
             "      \"default_branch\": \"2.x\",\n" +
             "      \"score\": 1.0\n" +
             "    },\n" +
@@ -372,26 +373,26 @@ object MockJson {
             "      \"releases_url\": \"https://api.github.com/repos/spring-projects/spring-boot/releases{/id}\",\n" +
             "      \"deployments_url\": \"https://api.github.com/repos/spring-projects/spring-boot/deployments\",\n" +
             "      \"created_at\": \"2012-10-19T15:02:57Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T13:35:54Z\",\n" +
-            "      \"pushed_at\": \"2018-12-26T19:27:57Z\",\n" +
+            "      \"updated_at\": \"2018-12-30T20:37:36Z\",\n" +
+            "      \"pushed_at\": \"2018-12-30T21:30:36Z\",\n" +
             "      \"git_url\": \"git://github.com/spring-projects/spring-boot.git\",\n" +
             "      \"ssh_url\": \"git@github.com:spring-projects/spring-boot.git\",\n" +
             "      \"clone_url\": \"https://github.com/spring-projects/spring-boot.git\",\n" +
             "      \"svn_url\": \"https://github.com/spring-projects/spring-boot\",\n" +
             "      \"homepage\": \"https://spring.io/projects/spring-boot\",\n" +
-            "      \"size\": 84959,\n" +
-            "      \"stargazers_count\": 32544,\n" +
-            "      \"watchers_count\": 32544,\n" +
+            "      \"size\": 84996,\n" +
+            "      \"stargazers_count\": 32605,\n" +
+            "      \"watchers_count\": 32605,\n" +
             "      \"language\": \"Java\",\n" +
             "      \"has_issues\": true,\n" +
             "      \"has_projects\": true,\n" +
             "      \"has_downloads\": true,\n" +
             "      \"has_wiki\": true,\n" +
             "      \"has_pages\": true,\n" +
-            "      \"forks_count\": 22169,\n" +
+            "      \"forks_count\": 22183,\n" +
             "      \"mirror_url\": null,\n" +
             "      \"archived\": false,\n" +
-            "      \"open_issues_count\": 398,\n" +
+            "      \"open_issues_count\": 406,\n" +
             "      \"license\": {\n" +
             "        \"key\": \"apache-2.0\",\n" +
             "        \"name\": \"Apache License 2.0\",\n" +
@@ -399,9 +400,9 @@ object MockJson {
             "        \"url\": \"https://api.github.com/licenses/apache-2.0\",\n" +
             "        \"node_id\": \"MDc6TGljZW5zZTI=\"\n" +
             "      },\n" +
-            "      \"forks\": 22169,\n" +
-            "      \"open_issues\": 398,\n" +
-            "      \"watchers\": 32544,\n" +
+            "      \"forks\": 22183,\n" +
+            "      \"open_issues\": 406,\n" +
+            "      \"watchers\": 32605,\n" +
             "      \"default_branch\": \"master\",\n" +
             "      \"score\": 1.0\n" +
             "    },\n" +
@@ -472,7 +473,7 @@ object MockJson {
             "      \"releases_url\": \"https://api.github.com/repos/kdn251/interviews/releases{/id}\",\n" +
             "      \"deployments_url\": \"https://api.github.com/repos/kdn251/interviews/deployments\",\n" +
             "      \"created_at\": \"2017-02-14T18:19:25Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T13:17:02Z\",\n" +
+            "      \"updated_at\": \"2018-12-30T19:25:20Z\",\n" +
             "      \"pushed_at\": \"2018-11-30T18:07:03Z\",\n" +
             "      \"git_url\": \"git://github.com/kdn251/interviews.git\",\n" +
             "      \"ssh_url\": \"git@github.com:kdn251/interviews.git\",\n" +
@@ -480,15 +481,15 @@ object MockJson {
             "      \"svn_url\": \"https://github.com/kdn251/interviews\",\n" +
             "      \"homepage\": \"https://www.youtube.com/channel/UCKvwPt6BifPP54yzH99ff1g?view_as=subscriber\",\n" +
             "      \"size\": 20842,\n" +
-            "      \"stargazers_count\": 31293,\n" +
-            "      \"watchers_count\": 31293,\n" +
+            "      \"stargazers_count\": 31319,\n" +
+            "      \"watchers_count\": 31319,\n" +
             "      \"language\": \"Java\",\n" +
             "      \"has_issues\": true,\n" +
             "      \"has_projects\": true,\n" +
             "      \"has_downloads\": true,\n" +
             "      \"has_wiki\": true,\n" +
             "      \"has_pages\": false,\n" +
-            "      \"forks_count\": 6108,\n" +
+            "      \"forks_count\": 6117,\n" +
             "      \"mirror_url\": null,\n" +
             "      \"archived\": false,\n" +
             "      \"open_issues_count\": 33,\n" +
@@ -499,109 +500,9 @@ object MockJson {
             "        \"url\": \"https://api.github.com/licenses/mit\",\n" +
             "        \"node_id\": \"MDc6TGljZW5zZTEz\"\n" +
             "      },\n" +
-            "      \"forks\": 6108,\n" +
+            "      \"forks\": 6117,\n" +
             "      \"open_issues\": 33,\n" +
-            "      \"watchers\": 31293,\n" +
-            "      \"default_branch\": \"master\",\n" +
-            "      \"score\": 1.0\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"id\": 892275,\n" +
-            "      \"node_id\": \"MDEwOlJlcG9zaXRvcnk4OTIyNzU=\",\n" +
-            "      \"name\": \"retrofit\",\n" +
-            "      \"full_name\": \"square/retrofit\",\n" +
-            "      \"private\": false,\n" +
-            "      \"owner\": {\n" +
-            "        \"login\": \"square\",\n" +
-            "        \"id\": 82592,\n" +
-            "        \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjgyNTky\",\n" +
-            "        \"avatar_url\": \"https://avatars0.githubusercontent.com/u/82592?v=4\",\n" +
-            "        \"gravatar_id\": \"\",\n" +
-            "        \"url\": \"https://api.github.com/users/square\",\n" +
-            "        \"html_url\": \"https://github.com/square\",\n" +
-            "        \"followers_url\": \"https://api.github.com/users/square/followers\",\n" +
-            "        \"following_url\": \"https://api.github.com/users/square/following{/other_user}\",\n" +
-            "        \"gists_url\": \"https://api.github.com/users/square/gists{/gist_id}\",\n" +
-            "        \"starred_url\": \"https://api.github.com/users/square/starred{/owner}{/repo}\",\n" +
-            "        \"subscriptions_url\": \"https://api.github.com/users/square/subscriptions\",\n" +
-            "        \"organizations_url\": \"https://api.github.com/users/square/orgs\",\n" +
-            "        \"repos_url\": \"https://api.github.com/users/square/repos\",\n" +
-            "        \"events_url\": \"https://api.github.com/users/square/events{/privacy}\",\n" +
-            "        \"received_events_url\": \"https://api.github.com/users/square/received_events\",\n" +
-            "        \"type\": \"Organization\",\n" +
-            "        \"site_admin\": false\n" +
-            "      },\n" +
-            "      \"html_url\": \"https://github.com/square/retrofit\",\n" +
-            "      \"description\": \"Type-safe HTTP client for Android and Java by Square, Inc.\",\n" +
-            "      \"fork\": false,\n" +
-            "      \"url\": \"https://api.github.com/repos/square/retrofit\",\n" +
-            "      \"forks_url\": \"https://api.github.com/repos/square/retrofit/forks\",\n" +
-            "      \"keys_url\": \"https://api.github.com/repos/square/retrofit/keys{/key_id}\",\n" +
-            "      \"collaborators_url\": \"https://api.github.com/repos/square/retrofit/collaborators{/collaborator}\",\n" +
-            "      \"teams_url\": \"https://api.github.com/repos/square/retrofit/teams\",\n" +
-            "      \"hooks_url\": \"https://api.github.com/repos/square/retrofit/hooks\",\n" +
-            "      \"issue_events_url\": \"https://api.github.com/repos/square/retrofit/issues/events{/number}\",\n" +
-            "      \"events_url\": \"https://api.github.com/repos/square/retrofit/events\",\n" +
-            "      \"assignees_url\": \"https://api.github.com/repos/square/retrofit/assignees{/user}\",\n" +
-            "      \"branches_url\": \"https://api.github.com/repos/square/retrofit/branches{/branch}\",\n" +
-            "      \"tags_url\": \"https://api.github.com/repos/square/retrofit/tags\",\n" +
-            "      \"blobs_url\": \"https://api.github.com/repos/square/retrofit/git/blobs{/sha}\",\n" +
-            "      \"git_tags_url\": \"https://api.github.com/repos/square/retrofit/git/tags{/sha}\",\n" +
-            "      \"git_refs_url\": \"https://api.github.com/repos/square/retrofit/git/refs{/sha}\",\n" +
-            "      \"trees_url\": \"https://api.github.com/repos/square/retrofit/git/trees{/sha}\",\n" +
-            "      \"statuses_url\": \"https://api.github.com/repos/square/retrofit/statuses/{sha}\",\n" +
-            "      \"languages_url\": \"https://api.github.com/repos/square/retrofit/languages\",\n" +
-            "      \"stargazers_url\": \"https://api.github.com/repos/square/retrofit/stargazers\",\n" +
-            "      \"contributors_url\": \"https://api.github.com/repos/square/retrofit/contributors\",\n" +
-            "      \"subscribers_url\": \"https://api.github.com/repos/square/retrofit/subscribers\",\n" +
-            "      \"subscription_url\": \"https://api.github.com/repos/square/retrofit/subscription\",\n" +
-            "      \"commits_url\": \"https://api.github.com/repos/square/retrofit/commits{/sha}\",\n" +
-            "      \"git_commits_url\": \"https://api.github.com/repos/square/retrofit/git/commits{/sha}\",\n" +
-            "      \"comments_url\": \"https://api.github.com/repos/square/retrofit/comments{/number}\",\n" +
-            "      \"issue_comment_url\": \"https://api.github.com/repos/square/retrofit/issues/comments{/number}\",\n" +
-            "      \"contents_url\": \"https://api.github.com/repos/square/retrofit/contents/{+path}\",\n" +
-            "      \"compare_url\": \"https://api.github.com/repos/square/retrofit/compare/{base}...{head}\",\n" +
-            "      \"merges_url\": \"https://api.github.com/repos/square/retrofit/merges\",\n" +
-            "      \"archive_url\": \"https://api.github.com/repos/square/retrofit/{archive_format}{/ref}\",\n" +
-            "      \"downloads_url\": \"https://api.github.com/repos/square/retrofit/downloads\",\n" +
-            "      \"issues_url\": \"https://api.github.com/repos/square/retrofit/issues{/number}\",\n" +
-            "      \"pulls_url\": \"https://api.github.com/repos/square/retrofit/pulls{/number}\",\n" +
-            "      \"milestones_url\": \"https://api.github.com/repos/square/retrofit/milestones{/number}\",\n" +
-            "      \"notifications_url\": \"https://api.github.com/repos/square/retrofit/notifications{?since,all,participating}\",\n" +
-            "      \"labels_url\": \"https://api.github.com/repos/square/retrofit/labels{/name}\",\n" +
-            "      \"releases_url\": \"https://api.github.com/repos/square/retrofit/releases{/id}\",\n" +
-            "      \"deployments_url\": \"https://api.github.com/repos/square/retrofit/deployments\",\n" +
-            "      \"created_at\": \"2010-09-06T21:39:43Z\",\n" +
-            "      \"updated_at\": \"2018-12-28T14:10:21Z\",\n" +
-            "      \"pushed_at\": \"2018-12-21T14:28:39Z\",\n" +
-            "      \"git_url\": \"git://github.com/square/retrofit.git\",\n" +
-            "      \"ssh_url\": \"git@github.com:square/retrofit.git\",\n" +
-            "      \"clone_url\": \"https://github.com/square/retrofit.git\",\n" +
-            "      \"svn_url\": \"https://github.com/square/retrofit\",\n" +
-            "      \"homepage\": \"http://square.github.io/retrofit/\",\n" +
-            "      \"size\": 4872,\n" +
-            "      \"stargazers_count\": 30832,\n" +
-            "      \"watchers_count\": 30832,\n" +
-            "      \"language\": \"Java\",\n" +
-            "      \"has_issues\": true,\n" +
-            "      \"has_projects\": false,\n" +
-            "      \"has_downloads\": true,\n" +
-            "      \"has_wiki\": true,\n" +
-            "      \"has_pages\": true,\n" +
-            "      \"forks_count\": 5822,\n" +
-            "      \"mirror_url\": null,\n" +
-            "      \"archived\": false,\n" +
-            "      \"open_issues_count\": 79,\n" +
-            "      \"license\": {\n" +
-            "        \"key\": \"apache-2.0\",\n" +
-            "        \"name\": \"Apache License 2.0\",\n" +
-            "        \"spdx_id\": \"Apache-2.0\",\n" +
-            "        \"url\": \"https://api.github.com/licenses/apache-2.0\",\n" +
-            "        \"node_id\": \"MDc6TGljZW5zZTI=\"\n" +
-            "      },\n" +
-            "      \"forks\": 5822,\n" +
-            "      \"open_issues\": 79,\n" +
-            "      \"watchers\": 30832,\n" +
+            "      \"watchers\": 31319,\n" +
             "      \"default_branch\": \"master\",\n" +
             "      \"score\": 1.0\n" +
             "    }\n" +

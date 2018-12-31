@@ -57,7 +57,9 @@ class CallbackPullInteractor(
     override fun onItemAtEndLoaded(pull: Pull) {
         params.value?.let { it ->
             disposable.add(getPaginationInteractor.execute(GetPaginationPullInteractor.Request(Constants.PAGE_SIZE))
-                    .flatMap { page -> saveInicialInteractor.execute(SavePullInteractor.Request(it.first, it.second, page)) }
+                    .flatMap { page ->
+                        saveInicialInteractor.execute(SavePullInteractor.Request(it.first, it.second, page))
+                    }
                     .subscribeWith(object : DisposableSubscriber<List<Long>>() {
                         override fun onStart() {
                             super.onStart()

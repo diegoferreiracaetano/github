@@ -8,7 +8,7 @@ import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.PullDataSource
 import com.diegoferreiracaetano.github.ui.pull.PullViewModel
-import mock.Mocks
+import mock.MocksTest
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -25,7 +25,7 @@ class PullViewModelTest {
     @Mock private lateinit var callback: CallbackPullInteractor
 
     private lateinit var viewModel: PullViewModel
-    private val param = Pair(Mocks.owner.name, Mocks.repo.name)
+    private val param = Pair(MocksTest.owner.name, MocksTest.repo.name)
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -58,7 +58,7 @@ class PullViewModelTest {
 
         // Given
 
-        val pull = listOf(Mocks.pull)
+        val pull = listOf(MocksTest.pull)
         val dataSource = PullDataSource.PullDataSourceFactory(pull)
 
         // When

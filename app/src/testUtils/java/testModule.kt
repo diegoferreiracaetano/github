@@ -6,7 +6,6 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 fun testModule(baseUrl: String) = module(override = true) {
 
     single {
@@ -25,5 +24,4 @@ fun testModule(baseUrl: String) = module(override = true) {
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries().build()
     }
-
 }

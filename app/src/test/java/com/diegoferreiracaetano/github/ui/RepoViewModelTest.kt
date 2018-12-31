@@ -8,7 +8,7 @@ import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.RepoDataSource
 import com.diegoferreiracaetano.github.ui.repo.RepoViewModel
-import mock.Mocks
+import mock.MocksTest
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -60,7 +60,7 @@ class RepoViewModelTest {
 
         // Given
 
-        val repo = listOf(Mocks.repo)
+        val repo = listOf(MocksTest.repo)
         val dataSource = RepoDataSource.RepoDataSourceFactory(repo)
 
         // When

@@ -9,8 +9,8 @@ import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.R
 import com.diegoferreiracaetano.github.ui.NetworkStatusViewHolder
 
-class PullAdapter(private val retryCallback: () -> Unit, private val listener: PullViewHolder.OnItemClickListener) :
-        PagedListAdapter<Pull, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
+class PullAdapter(private val retryCallback: () -> Unit, private val listener: PullViewHolder.OnItemClickListener)
+    : PagedListAdapter<Pull, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
 
     private var networkState: NetworkState? = null
 
