@@ -8,7 +8,7 @@ import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.PullDataSource
 import com.diegoferreiracaetano.github.ui.pull.PullViewModel
-import mock.MocksTest
+import com.diegoferreiracaetano.github.mock.MocksTest
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before

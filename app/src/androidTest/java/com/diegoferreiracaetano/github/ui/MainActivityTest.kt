@@ -14,9 +14,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import com.diegoferreiracaetano.github.R
-import mock.MocksTest
-import mock.RepoJson
-import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.Matchers.allOf
 import org.junit.After
@@ -26,7 +23,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.standalone.StandAloneContext.loadKoinModules
 import org.koin.test.KoinTest
-import testModule
+import com.diegoferreiracaetano.data.di.testModule
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
@@ -34,7 +31,7 @@ class MainActivityTest : KoinTest {
 
     @Rule
     @JvmField
-    var activityTestRule = ActivityTestRule(MainActivity::class.java, true, false)
+    var activityTestRule = ActivityTestRule(MainActivity::class.java, false, false)
 
     lateinit var server: MockWebServer
 
@@ -42,7 +39,6 @@ class MainActivityTest : KoinTest {
     @Throws(Exception::class)
     fun setUp() {
         server = MockWebServer()
-        server.start()
         loadKoinModules(testModule(server.url("/").toString()))
     }
 
@@ -52,51 +48,50 @@ class MainActivityTest : KoinTest {
         server.shutdown()
     }
 
+
     @Test
-    fun givenSomethin_whenAnAction_shouldDoSomething() {
+    fun GivenRepositoryScreen_WhenInicialize_ShouldRepositoriesTitle() {
 
-        server.enqueue(MockResponse().setResponseCode(200).setBody(RepoJson.REPO_SUCCESS))
-
+        server.setDispatcher(MockServerDispatcher().RequestDispatcher())
         activityTestRule.launchActivity(Intent())
 
         onView(withText("Github")).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.owner_name), withText("Diego"))).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.owner_image), hasSibling(withText("Diego")))).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun GivenRepositoryScreen_WhenLoadDataRepositories_ShouldRepositoryItens() {
+
+        server.setDispatcher(MockServerDispatcher().RequestDispatcher())
+        activityTestRule.launchActivity(Intent())
+
+        onView(allOf(withId(R.id.owner_name), withText("iluwatar"))).check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.owner_image), hasSibling(withText("iluwatar")))).check(matches(isDisplayed()))
         onView(allOf(withId(R.id.pull_title), withText("java-design-patterns"))).check(matches(isDisplayed()))
         onView(allOf(withId(R.id.pull_body), withText("Design patterns implemented in Java"))).check(matches(isDisplayed()))
     }
 
     @Test
-    fun when_repofragment_list_click() {
+    fun GivenRepositoryListingScreen_WhenClickFirstItem_ShouldPullTitle() {
 
-
-        // arrange
-        server.enqueue(MockResponse().setResponseCode(200).setBody(RepoJson.REPO_SUCCESS))
+        server.setDispatcher(MockServerDispatcher().RequestDispatcher())
         activityTestRule.launchActivity(Intent())
 
-        // assert
-        onView(withText("Github")).check(matches(isDisplayed()))
-
-        // act
         onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
-        // assert
         onView(withText("Pull Request")).check(matches(isDisplayed()))
     }
 
- /*   @Test
-    fun when_pullfragment_list() {
+    @Test
+    fun GivenPullScreen_WhenLoadDataPull_ShouldPullItens() {
+
+        server.setDispatcher(MockServerDispatcher().RequestDispatcher())
         activityTestRule.launchActivity(Intent())
 
-        onView(withId(R.id.recycleView)).perform(scrollToPosition<RecyclerView.ViewHolder>(0))
         onView(withId(R.id.recycleView)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
-        server.enqueue(MockResponse().setResponseCode(200).setBody(MockJsonTest.REPO_SUCCESS))
-
-        onView(withText("Pull Request")).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.pull_title), withText("Title Pull 10"))).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.pull_body), withText("body 10"))).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.owner_name), withText("Test 10"))).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.owner_image), hasSibling(withText("Test 10")))).check(matches(isDisplayed()))
-    }*/
+        onView(allOf(withId(R.id.pull_title), withText("bugfix: build failure"))).check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.pull_body), withText("Fix issue #834"))).check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.owner_name), withText("kezhenxu94"))).check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.owner_image), hasSibling(withText("kezhenxu94")))).check(matches(isDisplayed()))
+    }
 }

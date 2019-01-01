@@ -7,11 +7,13 @@ import com.diegoferreiracaetano.domain.pull.PullRepository
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
+import io.reactivex.rxkotlin.subscribeBy
 
 class PullRemoteRepository(private val api: GithubApi) : PullRepository {
 
     override fun getList(owner: String, repo: String, page: Int): Flowable<List<Pull>> {
-        return api.getPull(owner, repo, page)
+
+        return api.getPull(owner, repo, 1)
                 .flatMap { Flowable.fromIterable(it) }
                 .map { it.convertToPull() }
                 .flatMapMaybe { Maybe.just(it.copy(ownerName = owner, repoName = repo)) }

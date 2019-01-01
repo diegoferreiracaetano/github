@@ -1,13 +1,8 @@
-package mock
+package com.diegoferreiracaetano.github.mock
 
-import android.net.Uri
 import com.diegoferreiracaetano.domain.owner.Owner
 import com.diegoferreiracaetano.domain.pull.Pull
 import com.diegoferreiracaetano.domain.repo.Repo
-import java.io.BufferedReader
-import java.io.File
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.util.*
 
 object MocksTest {

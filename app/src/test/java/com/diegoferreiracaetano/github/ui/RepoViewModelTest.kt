@@ -8,7 +8,7 @@ import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
 import com.diegoferreiracaetano.github.mock.RepoDataSource
 import com.diegoferreiracaetano.github.ui.repo.RepoViewModel
-import mock.MocksTest
+import com.diegoferreiracaetano.github.mock.MocksTest
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before

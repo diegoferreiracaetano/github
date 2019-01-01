@@ -1,3 +1,5 @@
+package com.diegoferreiracaetano.data.di
+
 import androidx.room.Room
 import com.diegoferreiracaetano.data.local.LocalDb
 import com.diegoferreiracaetano.data.remote.github.api.GithubApi
