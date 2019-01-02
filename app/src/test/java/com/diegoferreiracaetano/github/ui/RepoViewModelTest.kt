@@ -6,9 +6,9 @@ import com.diegoferreiracaetano.domain.repo.Repo
 import com.diegoferreiracaetano.domain.repo.interactor.CallbackRepoInteractor
 import com.diegoferreiracaetano.domain.repo.interactor.GetListRepoInteractor
 import com.diegoferreiracaetano.domain.utils.NetworkState
-import com.diegoferreiracaetano.github.mock.RepoDataSource
-import com.diegoferreiracaetano.github.ui.repo.RepoViewModel
 import com.diegoferreiracaetano.github.mock.MocksTest
+import com.diegoferreiracaetano.github.mock.RepoDataSourceMock
+import com.diegoferreiracaetano.github.ui.repo.RepoViewModel
 import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -30,69 +30,107 @@ class RepoViewModelTest {
     var rule: TestRule = InstantTaskExecutorRule()
 
     @Before
-    @Throws(Exception::class)
     fun setUp() {
         MockitoAnnotations.initMocks(this)
     }
 
     @Test
-    @Throws(Exception::class)
     fun `Given repos, When load repo, Should update result`() {
 
         // Given
-
-        val repo = emptyList<Repo>()
-        val dataSource = RepoDataSource.RepoDataSourceFactory(repo)
+        val repo = listOf(MocksTest.repo)
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(repo)
 
         // When
-
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
         viewModel = RepoViewModel(getRepoInteractor, callback)
 
         // Should
-
         viewModel.result.observeForever { assertThat(it, `is`(repo)) }
     }
 
     @Test
-    @Throws(Exception::class)
     fun `Given repos, When empty, Should update result`() {
 
         // Given
-
-        val repo = listOf(MocksTest.repo)
-        val dataSource = RepoDataSource.RepoDataSourceFactory(repo)
+        val repo = emptyList<Repo>()
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(repo)
 
         // When
-
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
         viewModel = RepoViewModel(getRepoInteractor, callback)
 
         // Should
-
         viewModel.result.observeForever { assertThat(it, `is`(repo)) }
     }
 
     @Test
-    @Throws(Exception::class)
     fun `Given callback network, When load network, Should update result`() {
 
         // Given
-
         val networkState = MutableLiveData<NetworkState>()
         networkState.postValue(NetworkState.LOADED)
-        val dataSource = RepoDataSource.RepoDataSourceFactory(emptyList())
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(emptyList())
 
         // When
-
         `when`(getRepoInteractor.execute()).thenReturn(dataSource)
         `when`(callback.networkState).thenReturn(networkState)
 
         viewModel = RepoViewModel(getRepoInteractor, callback)
-        // Should
 
+        // Should
         viewModel.networkState.observeForever {
             assertThat(it, `is`(networkState.value))
         }
+    }
+
+    @Test
+    fun `Given param item, When set Item, Should update itemSelectd`() {
+
+        // Given
+        val repo = listOf(MocksTest.repo)
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(repo)
+
+        // When
+        `when`(getRepoInteractor.execute()).thenReturn(dataSource)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
+        viewModel.setItem(MocksTest.repo)
+
+        // Should
+        viewModel.getItem().observeForever {
+            assertThat(it, `is`(MocksTest.repo))
+        }
+    }
+
+    @Test
+    fun `Given repos, When retry , Should update result`() {
+
+        // Given
+        val repo = emptyList<Repo>()
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(repo)
+
+        // When
+        `when`(getRepoInteractor.execute()).thenReturn(dataSource)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
+        viewModel.retry()
+
+        // Should
+        viewModel.result.observeForever { assertThat(it, `is`(repo)) }
+    }
+
+    @Test
+    fun `Given repos, When refresh , Should update result`() {
+
+        // Given
+        val repo = emptyList<Repo>()
+        val dataSource = RepoDataSourceMock.RepoDataSourceFactory(repo)
+
+        // When
+        `when`(getRepoInteractor.execute()).thenReturn(dataSource)
+        viewModel = RepoViewModel(getRepoInteractor, callback)
+        viewModel.refresh()
+
+        // Should
+        viewModel.result.observeForever { assertThat(it, `is`(repo)) }
     }
 }

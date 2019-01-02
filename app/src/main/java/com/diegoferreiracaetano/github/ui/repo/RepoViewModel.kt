@@ -14,7 +14,7 @@ import com.diegoferreiracaetano.domain.utils.Constants
 class RepoViewModel(getRepoInteractor: GetListRepoInteractor, val callback: CallbackRepoInteractor)
     : ViewModel() {
 
-    val itemSelected = MutableLiveData<Repo>()
+    private val itemSelected = MutableLiveData<Repo>()
     val result: LiveData<PagedList<Repo>>
 
     init {
@@ -30,16 +30,20 @@ class RepoViewModel(getRepoInteractor: GetListRepoInteractor, val callback: Call
                 .build()
     }
 
-    fun retry() {
-        callback.retry()
-    }
-
     fun setItem(repo: Repo) {
         itemSelected.value = repo
     }
 
+    fun getItem(): LiveData<Repo> {
+        return itemSelected
+    }
+
     fun refresh() {
         callback.onZeroItemsLoaded()
+    }
+
+    fun retry() {
+        callback.retry()
     }
 
     val networkState = Transformations.switchMap(result, { callback.networkState })

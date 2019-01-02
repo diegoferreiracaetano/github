@@ -7,7 +7,6 @@ import com.diegoferreiracaetano.domain.pull.PullRepository
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
-import io.reactivex.rxkotlin.subscribeBy
 
 class PullRemoteRepository(private val api: GithubApi) : PullRepository {
 

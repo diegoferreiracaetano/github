@@ -5,31 +5,27 @@ import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import com.diegoferreiracaetano.domain.pull.Pull
 
+class PullDataSourceMock(val list: List<Pull>) : PageKeyedDataSource<Int, Pull>() {
 
-class PullDataSource(val list:List<Pull>): PageKeyedDataSource<Int, Pull>() {
-
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int,Pull>) {
-        callback.onResult(list,0,1)
+    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Pull>) {
+        callback.onResult(list, 0, 1)
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int,Pull>) {
-        callback.onResult(list,params.key+1)
-
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Pull>) {
+        callback.onResult(list, params.key + 1)
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int,Pull>) {
-
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Pull>) {
     }
 
-    class PullDataSourceFactory (val list: List<Pull>) : DataSource.Factory<Int, Pull>() {
+    class PullDataSourceFactory(val list: List<Pull>) : DataSource.Factory<Int, Pull>() {
 
-        val source = MutableLiveData<PullDataSource>()
+        val source = MutableLiveData<PullDataSourceMock>()
 
         override fun create(): DataSource<Int, Pull> {
-            val dataSource = PullDataSource(list)
+            val dataSource = PullDataSourceMock(list)
             source.postValue(dataSource)
             return dataSource
         }
-
     }
 }

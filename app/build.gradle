@@ -67,13 +67,9 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
                       '**/R$*.class',
                       '**/BuildConfig.*',
                       '**/Manifest*.*',
-                      '**/*Test*.*',
-                      '**/*BR*.*',
-                      'android/**/*.*',
-                      '**/androidx/databinding/*',
-                      '**/*Binding*.*']
+                      '**/*Test*.*']
 
-    def debugTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug", excludes: fileFilter)
+    def debugTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
     sourceDirectories.from(files([mainSrc]))
@@ -92,9 +88,6 @@ task ktlint(type: JavaExec, group: "verification") {
     main = "com.github.shyiko.ktlint.Main"
     classpath = configurations.ktlint
     args "src/**/*.kt"
-    // to generate report in checkstyle format prepend following args:
-    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
-    // see https://github.com/shyiko/ktlint#usage for more
 }
 check.dependsOn ktlint
 
@@ -122,7 +115,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$libs.paging"
     implementation "android.arch.navigation:navigation-fragment-ktx:$libs.nav_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$libs.nav_version"
-    implementation "android.arch.navigation:navigation-fragment:$libs.nav_version"
     implementation "de.hdodenhof:circleimageview:$libs.circleImage"
     implementation "androidx.room:room-rxjava2:$libs.room"
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$libs.retrofitRx"
@@ -132,11 +124,14 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$libs.loggingInterceptor"
     implementation "com.squareup.okhttp3:mockwebserver:$libs.okhttp"
 
+    debugImplementation 'androidx.fragment:fragment-testing:1.1.0-alpha03'
+    debugImplementation 'androidx.test:core:1.1.0'
+
     kapt "androidx.room:room-compiler:$libs.room"
     ktlint "com.github.shyiko:ktlint:$libs.ktlint"
 
-    testImplementation "junit:junit:$testLibs.junitExt"
     testImplementation "androidx.arch.core:core-testing:$libs.extensions"
+    testImplementation "junit:junit:$testLibs.junitExt"
     testImplementation "org.koin:koin-test:$testLibs.koin"
     testImplementation "androidx.paging:paging-common:$libs.paging"
     testImplementation 'org.robolectric:robolectric:4.0.2'

@@ -12,11 +12,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val host: NavHostFragment = supportFragmentManager
-                .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
-
-        NavigationUI.setupActionBarWithNavController(this, host.navController)
+        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        if (fragment is NavHostFragment) {
+            NavigationUI.setupActionBarWithNavController(this, fragment.navController)
+        }
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()

@@ -11,7 +11,7 @@ import com.diegoferreiracaetano.domain.pull.interactor.CallbackPullInteractor
 import com.diegoferreiracaetano.domain.pull.interactor.GetListPullInteractor
 import com.diegoferreiracaetano.domain.utils.Constants
 
-class PullViewModel(val getPullInteractor: GetListPullInteractor, val callback: CallbackPullInteractor)
+class PullViewModel(private val getPullInteractor: GetListPullInteractor, private val callback: CallbackPullInteractor)
     : ViewModel() {
 
     private var params = MutableLiveData<Pair<String, String>>()

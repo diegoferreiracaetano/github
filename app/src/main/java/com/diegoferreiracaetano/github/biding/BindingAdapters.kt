@@ -26,9 +26,9 @@ object BindingAdapters {
     @JvmStatic
     @BindingAdapter("imageUrl")
     fun ImageView.setImageUrl(url: String?) {
-        if (!url.isNullOrEmpty()) {
+        url.let { string ->
             Glide.with(context)
-                    .load(url)
+                    .load(string)
                     .asBitmap()
                     .placeholder(context.getDrawable(R.drawable.ic_account))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
